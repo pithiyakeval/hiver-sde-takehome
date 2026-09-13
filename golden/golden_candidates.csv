@@ -1,0 +1,239 @@
+﻿example_id,customer_tweet_id,customer_text,intent,confidence,is_ambiguous,ambiguity_reason,language,expected_action,should_escalate,escalation_reason,annotator,sampling_bucket,sampling_score
+G001,1000118,@AmazonHelp It's all good now 😊 I chatted in &amp; it turns out the tracking shows it was never delivered. Your rep = v helpful &amp; replacement is on its way,,,,,english_or_unknown,,,,,common_normal,9.0
+G002,1000127,@43895 watching Loveless on Amazon prime cuz of your VIFF review &amp; the subtitles are weird &amp; some of it is censored? @116618 ???,,,,,english_or_unknown,,,,,common_normal,9.0
+G003,1000138,"@AmazonHelp I already connected. Did live chat, you are ready for refund. people need to know the actual fact of @115850",,,,,english_or_unknown,,,,,common_normal,9.0
+G004,1000164,"This is after @AmazonHelp package was supposedly out for delivery this morning, then resent this afternoon. What am I paying for Prime for?!",,,,,english_or_unknown,,,,,other_unclear_candidate,11.0
+G005,1000194,"@AmazonHelp I was suppose to receive the order on Friday(Oct 20), but saw that it got delayed from Oct 20-24.",,,,,english_or_unknown,,,,,common_normal,9.0
+G006,1000195,Looks like it’s time to invest in Best Buy’s Gamers Club. @115821 messed up my preorder for a game I was really excited about this year,,,,,english_or_unknown,,,,,other_unclear_candidate,11.0
+G007,1000980,"@AmazonHelp @356980 Hii amazon, i got a call from ur side n unfortunately missed it.. can u plss call back n let me know what was it call about...",,,,,english_or_unknown,,,,,other_unclear_candidate,11.0
+G008,1000985,"dear sir, order id:404-4313025-2413959 in India not solved refund issue since four months by amazon India,please......@48241,@30724",,,,,english_or_unknown,,,,,common_normal,9.0
+G009,1001005,@AmazonHelp I preordered amazon echo but want to go for amazon plus now. Anyway to reach out to seller? I want another invitation.,,,,,english_or_unknown,,,,,common_normal,9.0
+G010,1001009,"@AmazonHelp Difference between 'best possible prices' and charging higher than MRP. And yes, that was quite a comment, which you shouldn't take lightly.",,,,,english_or_unknown,,,,,other_unclear_candidate,11.0
+G011,1001010,So @115850 prime lists/sells at higher than MRP. Caught. Now bribing me wth Rs.100 voucher. Save that for lawyer fees I'd say. @AmazonHelp,,,,,english_or_unknown,,,,,other_unclear_candidate,11.0
+G012,1001029,"@AmazonHelp I bought a TV and this is how Hermes left it! The card had a 'no safe place' option, but this was ignored 😠. https://t.co/vOMn76pxx5",,,,,english_or_unknown,,,,,common_normal,9.0
+G013,1001034,Desperate to go out but waiting in for a delivery from @115830 as I can’t track my order &amp; time my outing accordingly. Poor.,,,,,english_or_unknown,,,,,common_normal,9.0
+G014,1001037,Amazon shipping sucks! 3 of my last 4 orders have been late by multiple days or just been lost completely. @115821 @118706,,,,,english_or_unknown,,,,,common_normal,9.0
+G015,1001043,"dear sir, order id:404-4313025-2413959 in India not solved refund issue since four months by amazon India,please......@115851",,,,,english_or_unknown,,,,,common_normal,9.0
+G016,1001046,"@AmazonHelp I purchased Amazon pipa offer pack 1.25 litre after sending message received tracking ID not received Amazon gift card 
+Tracking ID- 8ABOLOENA4730 PLEASE HELP",,,,,english_or_unknown,,,,,multi_intent,15.0
+G017,1001056,"@AmazonHelp U r gvng rplcmnt n tkng my phn Mon n replacement device will b given 2 me by 29Nov ! Dis is d sheer example of bad cust service, luk into it https://t.co/vfV1MkyVqX",,,,,english_or_unknown,,,,,common_normal,9.0
+G018,1001058,"@AmazonHelp I dnt hv spare phn, so please refund my money i made a mistake buying phn from Amazon, i.will mk sure not to repeate that mistake in future",,,,,english_or_unknown,,,,,common_normal,9.0
+G019,1001064,Hola @116928. ¿Cómo hablo con un responsable o encargado de un pedido de Prime? Por telefono es la tercera vez que cuelgan...,,,,,spanish,,,,,multilingual,11.0
+G020,1001070,"Hallo @116316, kurze Frage: die von mir als „Prime“ erworbene Lieferung „Next business day“ gibt es jetzt gar nicht mehr?",,,,,german,,,,,multilingual,11.0
+G021,1001082,Help @AmazonHelp ! I tried to sign up for a Prime trial but I think it's automatically charged for the year!!,,,,,english_or_unknown,,,,,common_normal,9.0
+G022,1001090,@AmazonHelp Not received any email. Pls stop harping about it! And enough of this harassment. If your courier guy calls once more you will get reported,,,,,english_or_unknown,,,,,common_normal,9.0
+G023,1001096,@115850 I purchased mobile BBkey one vide invoice noBOM4-2936 dtd 4 th Oct17.Its back soft key not working since 21 st Oct.Pls replace it.,,,,,english_or_unknown,,,,,common_normal,9.0
+G024,1001965,"@117093 Other than sharing my login credentials, is there a way to collaborate on an order with other members of the household?",,,,,english_or_unknown,,,,,common_normal,9.0
+G025,1001975,@AmazonHelp The tracking shows the courier could not find my address. Which is absolute rubbish. This has never happened before.,,,,,english_or_unknown,,,,,common_normal,9.0
+G026,1001976,@115830 why do I pay for amazon prime when the last 2 items I’ve ordered haven’t been delivered on the specified date????,,,,,english_or_unknown,,,,,common_normal,9.0
+G027,1001979,@AmazonHelp Just the regular website. I kind of expect Kindle Unlimited to appear in the dropdown filter.,,,,,english_or_unknown,,,,,common_normal,9.0
+G028,1001980,"@AmazonHelp Is there a way to search just Kindle Unlimited books? I can't seem to find a filter other than Kindle, then hunting.",,,,,english_or_unknown,,,,,common_normal,9.0
+G029,1002197,@115821 where is my package? Last time you deliver to my neighbors and this time it's no where. :'(,,,,,english_or_unknown,,,,,common_normal,9.0
+G030,1002501,You know what's really annoying? Ordering something from @115821 with Amazon Prime and not getting it when you're suppose to,,,,,english_or_unknown,,,,,common_normal,9.0
+G031,1002554,@115850 3 calls hv been made to customer care within last 3 days and all 3 days i am being assured of receiving the cashback on same day but....,,,,,english_or_unknown,,,,,common_normal,9.0
+G032,1002569,"@AmazonHelp Sent DM of the agents number, call him and check where the package is.. else refund my extra amount!",,,,,english_or_unknown,,,,,common_normal,9.0
+G033,1002576,Paid @115850 for a 2-day delivery &amp; agent says he’s coming for delivery (at diff times entire day). Don’t charge xtra if you cant deliver!,,,,,english_or_unknown,,,,,common_normal,9.0
+G034,1002616,"@AmazonHelp I did visit Contact Us, but der is no such tab which can resolve the issue. Only Order details
+Return Order details. No address for collecti",,,,,english_or_unknown,,,,,common_normal,9.0
+G035,1002617,"@AmazonHelp @115850  there is no CANCEL ORDER tab in my app. How can i return the item for the refund, when I have not at all received it?",,,,,english_or_unknown,,,,,common_normal,9.0
+G036,1002622,"@115850 
+My tracking #511355783673 
+Delivery man didn't handover the package to me. From where to collect?
+Where and how to contact you",,,,,english_or_unknown,,,,,common_normal,9.0
+G037,1002637,"Protection Level : Ultimate
+@115850 air cushions should not deflate while in transit. Kinda negates the purpose. 😛 https://t.co/tghimv1MTc",,,,,english_or_unknown,,,,,common_normal,9.0
+G038,1002660,"@119625 guys the app stops recognizing the SD card once you format it as an internal memory. Gives ""disk full"" error. Please fix it.",,,,,english_or_unknown,,,,,common_normal,9.0
+G039,1002662,"@119625 Sorry. Did that, still not helping. My SD card is formatted as an internal memory is that why it doesn't download directly to my Sd card?",,,,,english_or_unknown,,,,,common_normal,9.0
+G040,1002878,"@AmazonHelp Prime item ordered thurs “attempted delivery” fri but they didn’t as I was there 7am - 6pm, promised delivery yesterday and never happened",,,,,english_or_unknown,,,,,common_normal,9.0
+G041,1002882,@AmazonHelp I’m not paying again for product Ive already paid for on next day delivery. If you can’t deliver the First I don’t trust you to deliver no 2,,,,,english_or_unknown,,,,,common_normal,9.0
+G042,1002898,"@AmazonHelp Able to place order, but then a few hours later I'm advised to 'Update My Payment Method'. My card is valid and has funds on it! Why?",,,,,english_or_unknown,,,,,multi_intent,15.0
+G043,1002913,"@AmazonHelp I have issues with subtitles out of sync on Prime Video, on browser and Android app, with almost all the videos. How to solve?",,,,,english_or_unknown,,,,,common_normal,9.0
+G044,1002921,"@AmazonHelp It was because I bought a UK Kindle book. It reset everything I had linked to my Echos, absolutely EVERYTHING. Sorted it now.",,,,,english_or_unknown,,,,,common_normal,9.0
+G045,1002922,What an absolute farce. Alexa 'forgot' ALL my Smarthome links so I've had to redo them. Alexa wasn't even showing as Online. 🤔 @AmazonHelp,,,,,english_or_unknown,,,,,common_normal,9.0
+G046,1003583,@115821 I bought some chargers under the assumption they will arrive in two days not Monday???,,,,,english_or_unknown,,,,,common_normal,9.0
+G047,1003632,"@115850 i can see that 10% additional cash back on sbi debit card, plz tell me in details. Will u give me cash back in my a/c  , or what",,,,,english_or_unknown,,,,,common_normal,9.0
+G048,1003634,@115850 This thing made my day..i never knew being a prime member have such benefits.😊 https://t.co/WQdyBmcfCb,,,,,english_or_unknown,,,,,common_normal,9.0
+G049,1003670,@115850 great customer service.refund ki koi jhinjhat nehin..bas ek e-mail hi kafi hai.👍,,,,,english_or_unknown,,,,,common_normal,9.0
+G050,1003712,"@115850 
+Tracking #511355783673 Inspite of Address, package not delivered to me. Asking to contact amazon. Now to contact links found",,,,,english_or_unknown,,,,,common_normal,9.0
+G051,1004364,@AmazonHelp Could you please explain me?how much time I share the details and taking follow up.,,,,,english_or_unknown,,,,,common_normal,9.0
+G052,1004384,@115821 @115850 Why not a international warranty for Amazon Kindle? Sounds good enough! Ain't it?,,,,,english_or_unknown,,,,,common_normal,9.0
+G053,1004387,@AmazonHelp why do you not send books in protective packaging? I just received 3 books from you all scratched and with other damage -_-,,,,,english_or_unknown,,,,,common_normal,9.0
+G054,1004393,@115850 customer service and refund procedure sucks. Wasted 1.5hrs and 45mins of my life and yet did not get any solution. Horrendous.,,,,,english_or_unknown,,,,,common_normal,9.0
+G055,1004520,@115821 i have tried filing an A-Z claim and it doesn’t give me the option and i have contacted the seller twice and have not gotten a response. I would like these refunded. They never arrived. Thank you. https://t.co/JlB1zZ2GRf,,,,,english_or_unknown,,,,,common_normal,9.0
+G056,1004565,Is this how @115830 delivers parcels nowadays? Pretty shocking for my first order as a new prime member!! https://t.co/8tLazV0rkI,,,,,english_or_unknown,,,,,common_normal,9.0
+G057,1004568,"@2600 Bonjour, j'ai un gros problème là avec ma commande d'amazon coins et de la réduction black friday. Serais-ce possible d'en discuter en MP ?",,,,,french,,,,,multilingual,11.0
+G058,1004570,"@AmazonHelp Je sais pas si c’est grâce aux différents messages que j’ai envoyé au services client mais le remboursement a été effectué dans l’après midi,encore merci pour vos services",,,,,french,,,,,multilingual,11.0
+G059,1004578,@AmazonHelp I had ordered 2 rakhi sets way back in august... those sets never got delievered neither did i get my money back ... what am i supposed to do ... ? Been after u guys since the past 3 months ... its damn frustrating... and dissappointing too ...,,,,,english_or_unknown,,,,,common_normal,9.0
+G060,1004594,"It REALLY annoys me that each and every time I order something from Amazon prime and USPS is the carrier, they NEVER deliver my items on time!",,,,,english_or_unknown,,,,,common_normal,9.0
+G061,1004599,@AmazonHelp Account has been on hold for what seems like forever (a year) 😩 I wanna Christmas shoppppppp,,,,,english_or_unknown,,,,,common_normal,9.0
+G062,1004604,Been trying to get information about my  @115821 account for a whole year now and still feel like I’m talking to a wall everytime I call.,,,,,english_or_unknown,,,,,common_normal,9.0
+G063,1004606,@AmazonHelp Is that anything to do with that I'm usually a .co.uk customer? Is there a way I can spend my $ gift card voucher in the .co.uk store?,,,,,english_or_unknown,,,,,common_normal,9.0
+G064,1004633,Can’t really believe @115830 are sending out vinyl by sticking a postage label on the shrink wrap! Arrived damaged - hardly a surprise. I’ve seen some bad vinyl packaging in my time by this takes the piss. #anrgy @AmazonHelp https://t.co/Pqw5rfQrC9,,,,,english_or_unknown,,,,,common_normal,9.0
+G065,1004644,Impressive service from @115830 as always - didn’t even ask for next day delivery &amp; got it anyway. Great customer service 🙏🏻🙏🏻🙏🏻,,,,,english_or_unknown,,,,,common_normal,9.0
+G066,1004645,"@357788 @115830 Two deliveries in as many weeks, missing products, wrong items, battered boxes, @115830 going down hill, wont be ordering high value items again from you. https://t.co/juBpIUCVLJ",,,,,english_or_unknown,,,,,common_normal,9.0
+G067,1004650,"@115850 @115821 Received book on 9 Nov but a pirated version. Req for exchange till now waiting &amp; return window has been closed, why?",,,,,english_or_unknown,,,,,common_normal,9.0
+G068,1004667,"The saga of my screwed-up Letters from Wishing Rock (print version of the book) product page continues. Now, the book is available in two colors! And the number of unrelated 5* reviews has doubled!
+@AmazonHelp @115821 https://t.co/fi8CcXULkg",,,,,english_or_unknown,,,,,common_normal,9.0
+G069,1005041,@AmazonHelp @115850  Should I wait for delivery at pincode 457001 or buy from local market..??? 😐😐 https://t.co/oWPu2jlv2E,,,,,english_or_unknown,,,,,short_noisy,10.0
+G070,1005049,@AmazonHelp Pre-orders? I have a default place. But it wasn't on the packaging so I think he guessed. I have a really important thing on the way 🙁,,,,,english_or_unknown,,,,,common_normal,9.0
+G071,1005057,"@115821 @AmazonHelp Someone has used my card in US for $10.99. I am not aware of this, @115850 is saying that it belong to us",,,,,english_or_unknown,,,,,common_normal,9.0
+G072,1005069,@AmazonHelp Ha... Now this! And this was supposed to be a prime delivery! Thanks for ruining everything. The occasion is over already.,,,,,english_or_unknown,,,,,common_normal,9.0
+G073,1005121,"No dai ma adesso #Amazon consegna anche la domenica? Non ci credo!
+Adesso compro qualcosa solo per provare se è vero! https://t.co/kn7eam4gPW",,,,,italian,,,,,multilingual,11.0
+G074,1005133,@AmazonHelp @357901 Hello. Yes. It was a single order &amp; the two charges were identical. The bank said Amazon's credit was reversed &amp; now I have two charges.,,,,,english_or_unknown,,,,,common_normal,9.0
+G075,1005134,"@115851 Hello! My husband purchased a camera for my son on @115821 and we were charged twice for it. We called last night and the charge went from pending to processed... twice. How can we fix this, please? Thanks!",,,,,english_or_unknown,,,,,common_normal,9.0
+G076,1005157,@AmazonHelp @115850 While exchanging the phone what things need to be given? Do I need to return the box of the phone also?,,,,,english_or_unknown,,,,,common_normal,9.0
+G077,1005964,@AmazonHelp hi i tried to change my login twice and now I can not log in at all. what can I do? I have no access to my account.,,,,,english_or_unknown,,,,,common_normal,9.0
+G078,1005980,@AmazonHelp First chat u issued the replacement but didn’t say a word about how to return the defective. said amazon locker needed. ~35’ &amp; 2 agents,,,,,english_or_unknown,,,,,common_normal,9.0
+G079,1005990,@AmazonHelp My ordered is delayed with the bday presents for my daughter and nobody seems to care at @115821. Bad first experience using @115821 locker,,,,,english_or_unknown,,,,,common_normal,9.0
+G080,1006001,"@AmazonHelp In Kalyan we have 2 @18350 service centre, both r saying we don't look Memory card. @115850 plz give me address where should I go ??",,,,,english_or_unknown,,,,,common_normal,9.0
+G081,1006019,I haven’t received any charger with my product @164902 charge 3 ordered during sale. charging it with USB battery doesn’t last @115850 1,,,,,english_or_unknown,,,,,common_normal,9.0
+G082,1006021,"@AmazonHelp The other item delivered w/ that order number was delivered, and the rest of the order still appears, with an adjusted invoice.",,,,,english_or_unknown,,,,,common_normal,9.0
+G083,1006027,@AmazonHelp It spent a long time in a PO box I couldn't get to so the return window is already closed. Any chance of an exception? https://t.co/BxeTojZuaG,,,,,english_or_unknown,,,,,common_normal,9.0
+G084,1006037,@AmazonHelp But why service tax? FYI you cannot charge service tax on 30.09.17. Pls hire some better tax consultant,,,,,english_or_unknown,,,,,common_normal,9.0
+G085,1006040,@145910 @60553 @164163 @137848 @115850 Service tax charged on 30th September 2017 invoice.... What is this??? https://t.co/QMZ2PL7Cof,,,,,english_or_unknown,,,,,short_noisy,10.0
+G086,1006052,@115830 False advertising Advertise “guaranteed” next day delivery stay in all day. They mark as delivered and no item. Told 2 wait 48hr..,,,,,english_or_unknown,,,,,common_normal,9.0
+G087,1006592,@115830 @AmazonHelp Hello! Where can I find the latest news on new movies and tv series added? Please,,,,,english_or_unknown,,,,,common_normal,9.0
+G088,1006601,"@AmazonHelp I am being charged twice for the same book rental,what do i need to do to fix this?",,,,,english_or_unknown,,,,,common_normal,9.0
+G089,1006612,Hey @AmazonHelp remember when I complained about excessive packaging last time? Guess what I received today... https://t.co/Ve3C4GcQzT,,,,,english_or_unknown,,,,,common_normal,9.0
+G090,1006625,@115850 72 hours and still no reply as to why u deduct shipping charges from people who pay in advance and not from COD orders!!!Cheaters,,,,,english_or_unknown,,,,,likely_escalation,10.0
+G091,1006633,"@AmazonHelp bonjour, g commandé un colis qui a été livré ce jour. On me dit qu’il a été laissé dans ma boite aux lettres mais je n’ai rien..",,,,,french,,,,,multilingual,11.0
+G092,1006635,@115850 (1/2) Order no. 403-6584566-9823528 was on guaranteed delivery. After waiting for whole day I get 2 know it wont b delivered today,,,,,english_or_unknown,,,,,common_normal,9.0
+G093,1007008,@358299 @115821 I just received the Polaroid paper...and I just figured that it’s the wrong kind of paper for my camera 😭😭😭 How can I return it?,,,,,english_or_unknown,,,,,common_normal,9.0
+G094,1007032,"Another @115830 Prime next day delivery order, another non delivery/dispatch. Think that's about 5 in the last few months... #Useless",,,,,english_or_unknown,,,,,common_normal,9.0
+G095,1007047,@AmazonHelp Si un par de mensajes y sin respuesta. No quiero la devolución quiero mi pedido. Gracias,,,,,spanish,,,,,multilingual,11.0
+G096,1007563,@AmazonHelp Grazie ma è inutile. Quando la consegna è affidata a loro già so che dovrò passare all’ufficio postale. Infatti sarà così anche sta volta,,,,,italian,,,,,multilingual,11.0
+G097,1007572,@AmazonHelp So you failed to deliver a Prime order on the promised day and I cancelled.  When do I get the monies refunded?,,,,,english_or_unknown,,,,,common_normal,9.0
+G098,1007728,@115850 asked for refund Order# 404-7401584-6902710 got a reply-ur cheque was deliverd to sum1 else by mistake so we can't initiate a new1,,,,,english_or_unknown,,,,,common_normal,9.0
+G099,1007735,@AmazonHelp Two disconnected chats and a third attempt later and my Prime package is still four days late but marked as ‘handed to resident’.,,,,,english_or_unknown,,,,,common_normal,9.0
+G100,1008499,@AmazonHelp My item was damaged during shipping because it was mailed in a bubble envelope. How will you help me?,,,,,english_or_unknown,,,,,common_normal,9.0
+G101,1008501,@AmazonHelp That begins a dialogue with c/s? I pay for Amazon Prime to get certain items quickly and our @118706 lies about attempts.,,,,,english_or_unknown,,,,,common_normal,9.0
+G102,1008508,Got slammed with a cold out of nowhere &amp;spent weekend stuck on the couch. @115821 Prime same day delivery has been a lifesaver🙌🏽,,,,,english_or_unknown,,,,,common_normal,9.0
+G103,1008894,@AmazonHelp (1/2) Order no. 403-6584566-9823528 was guaranteed delivery. After waiting for whole day I get 2 know it wont b delivered today,,,,,english_or_unknown,,,,,common_normal,9.0
+G104,1008916,@AmazonHelp I received an item that was apparently a gift from Amazon. How did this happen? Do I get charged?,,,,,english_or_unknown,,,,,common_normal,9.0
+G105,1008919,"@AmazonHelp..Order No..404-6800877-5877920
+Item recieved broken. Please get it picked up from shipped address. No option on ur site.",,,,,english_or_unknown,,,,,common_normal,9.0
+G106,1008937,"@115821 you are punishing me, ‘cause of something that you did. It’s your business this late package, and I’m not supposed to suffer w/ it.",,,,,english_or_unknown,,,,,common_normal,9.0
+G107,1008982,@115850  I received the same very late after 20 days and a different chinese material with very poor quality and very poor packing as well https://t.co/RINxcB2RsU,,,,,english_or_unknown,,,,,common_normal,9.0
+G108,1009217,@amazonhelp tried prime to get order for today. Waited all day for ‘out for delivery’ &amp; not turned up. 40 min call to get a refund. Rubbish!,,,,,english_or_unknown,,,,,common_normal,9.0
+G109,1009231,"Honestly though @AmazonHelp, considering the order was not only late by two days, It it was packaged in a bubble wrap envelope. Ridiculous. https://t.co/0GgK7lcoz3",,,,,english_or_unknown,,,,,common_normal,9.0
+G110,1009234,"@AmazonHelp Yes I have. I’ve also reset the device, checked all screen, rotation, and screenlock settings.",,,,,english_or_unknown,,,,,common_normal,9.0
+G111,1009238,"@AmazonHelp App is locked in Portrait Mode on iPad Air 2, latest iOS. I troubleshot with Apple, and they said contact you about settings.",,,,,english_or_unknown,,,,,common_normal,9.0
+G112,1009244,"@AmazonHelp wondering when Slobberknocker by Jim Ross is shipping in the UK, released Thursday but no update on dispatch date?",,,,,english_or_unknown,,,,,common_normal,9.0
+G113,1010007,"@115850 please unblock my Amazon account __email__
+
+I've mailed several time no rrply from your cis team",,,,,english_or_unknown,,,,,common_normal,9.0
+G114,1010016,"@115850  Request you to kindly     improve your return policy , it was too headache for returning an defective Iphone 8 Plus",,,,,english_or_unknown,,,,,common_normal,9.0
+G115,1010019,Trying to sign up and test out @117093 - every time I click start trial it just brings me back to “manage your prime membership”,,,,,english_or_unknown,,,,,common_normal,9.0
+G116,1010364,"@AmazonHelp Hello @AmazonHelp i got my order bt did not get any coupon or prime membership details, hw can i get this? prime membership nt yet activtd?",,,,,english_or_unknown,,,,,common_normal,9.0
+G117,1010367,"@115850 I had ordered a product through Amazon 20 days back.!Neither the product is received,nor the refund is initiated as per request.",,,,,english_or_unknown,,,,,common_normal,9.0
+G118,1010391,"@AmazonHelp just to update, contact # on sms of your delivery guy switched off since afternoon. your call center guys have no clue to answer. no shop nt",,,,,english_or_unknown,,,,,common_normal,9.0
+G119,1010404,"@AmazonHelp Hola, Por Amazon, me decía que mi pago había sido declinado, lo volví a realizar y ahora tengo dos cargos porque el primero si se hizo.",,,,,spanish,,,,,multilingual,11.0
+G120,1010405,"Hola amigos, tienen un centro de soporte? me hicieron un cargo doble por un pedido. @116875",,,,,spanish,,,,,multilingual,11.0
+G121,1012312,I have still not received my refund for returned item...which supposed to b in my account by 19th Oct. Not the first time. @AmazonHelp,,,,,english_or_unknown,,,,,multi_intent,15.0
+G122,1012791,"@117086 Tenho já vários livros comprados e uso hoje tanto o app quanto o Kindle. Mas ao mudar de cel notei que o livro que ando lendo no app não está como comprado, apenas como amostra. Que faço?",,,,,spanish,,,,,multilingual,11.0
+G123,1012902,"@AmazonHelp Je n'en ai aucune idée, je ne l'ai eu que par téléphone ! Je peux vous indiquer le numéro de commande en MP",,,,,french,,,,,multilingual,11.0
+G124,1014288,"Quando você recebe um e-mail da @117086 dizendo que a entrega do seu pedido de ""All the Crooked Saints"" foi antecipada!! 🎉🎉🎉💃🏻💃🏻💃🏻",,,,,spanish,,,,,multilingual,11.0
+G125,1014292,@AmazonHelp Bonjour il s'agit d'un vendeur tiers je l'ai contacté plusieurs fois aucune reponse ! La somme a ete prelevee depuis longtemps !,,,,,french,,,,,multilingual,11.0
+G126,1014294,@120533 Commande passée en août toujours pas reçue !Mentionnée expédiée mais rien ! Je trouve ca inadmissible pour une marque comme amazon,,,,,french,,,,,multilingual,11.0
+G127,1016388,"@AmazonHelp So 1 month free prime after 2 days late, 3 days late &amp; I was refunded but told I’d still receive my order... LOL! Amazon prime is balls!",,,,,english_or_unknown,,,,,multi_intent,15.0
+G128,1020279,@115830 SHOCKING SERVICE FROM AMAZON. STILL WAITING WEEKS LATER FOR £114 REFUND FOR ITEMS I NEVER ORDERD ON KINDLE.,,,,,english_or_unknown,,,,,multi_intent,15.0
+G129,1022731,"@115850 I had requested a return on 15th of Sept. But it is still under process. Kindly update the status..
+ID:407-1810486-1689900",,,,,english_or_unknown,,,,,boundary_case,13.0
+G130,1028207,@115850 #171-0035162-0017904 not delivered with paid delivery &amp; shows delivered. Its late by 3 days.2nd instance in 2 months. Pls help.,,,,,english_or_unknown,,,,,boundary_case,13.0
+G131,1028956,"@AmazonHelp my refund didn't come in my bank account, order dated 6.10.17,order no-408-8380090-5429104 .USB cable for ph.",,,,,english_or_unknown,,,,,boundary_case,13.0
+G132,1028991,@AmazonHelp it says it was delivered but it never came. I was charged for it a second time. I just want my money back and I want to cancel the order.,,,,,english_or_unknown,,,,,multi_intent,15.0
+G133,103088,"ORDER NOT DELIVERED WORST EXPERIENCE WITH AMAZON!!!@
+booked remi y1 on 22nov from wednesday sale,order  not delivered nd got cancelled aftr 10 days of shippment. mr amazon i want my phone. worst service, i ever recieved. once in weekend sale.
+@115821  @AmazonHelp  @138673 https://t.co/8fKcpFvzcx",,,,,english_or_unknown,,,,,short_noisy,10.0
+G134,1031073,403-8415773-6460323 emi charged on cancelled order ! No refund processed to bank ! Fraud by amazon #AmazonIndia #Amazon,,,,,english_or_unknown,,,,,boundary_case,13.0
+G135,1034257,"@AmazonHelp I had accidentally ordered a wrong item, only getting to know after delivery and payment. No option for refunds!? WHY?",,,,,english_or_unknown,,,,,multi_intent,15.0
+G136,1035558,"@AmazonHelp It’s my fault! I forgot to update my account with a new card. Updated it, repaid, 1 book has downloaded 1 not. Used iPhone &amp; tried Kindle.",,,,,english_or_unknown,,,,,multi_intent,15.0
+G137,1035559,@AmazonHelp I updated a card on my account to re-buy a kindle book. Payment has been taken but the book not downloaded. Pls can you help? TY,,,,,english_or_unknown,,,,,multi_intent,15.0
+G138,1036542,@115850 Still not received the refund of 499 for fire tv stick from you after 1 month of buy. Help needed !!!,,,,,english_or_unknown,,,,,multi_intent,15.0
+G139,1042320,"@115850  My Keyboard  cover ( ORDER # 405-9026240-1774718)  had been delivered on 28th Sept. 2017. Since the product was undersized, I sent online request for return on 3rd Oct. 2017. NO ACTION HAD BEEN TAKEN . While tracking I found that Return window closed on 09-Oct-2017 !!!",,,,,english_or_unknown,,,,,boundary_case,13.0
+G140,1044237,@115850 @AmazonHelp @45604 Amazon Order No. 408-8032741-7865923 not installed yet. Kodak 32HDXsmart H/L no. 9311119721 no response.,,,,,english_or_unknown,,,,,likely_escalation,10.0
+G141,1049386,"@115850 Order# 408-5985511-2541125 return/refund requested due to wrong item packed a month ago, no response from Amazon/seller!!",,,,,english_or_unknown,,,,,boundary_case,13.0
+G142,1051929,"@AmazonHelp Order 
+202-0668226-2705165 is now over 10 days late for delivery. Please can you cancel and refund item. Many thanks.",,,,,english_or_unknown,,,,,boundary_case,13.0
+G143,1057376,@115850: Order no.:403-0082364-6927522.The Lakme kajal pkt was torn n kajal was not there(appears stolen).I need replacement n not refund. https://t.co/gVHx61ei1v,,,,,english_or_unknown,,,,,likely_escalation,10.0
+G144,1062283,"@115821 @AmazonHelp Case 4359954811.It's been over 6 weeks,no reply. You said 48 hours. Give my money back.We need it to get thru #NunsFire",,,,,english_or_unknown,,,,,likely_escalation,10.0
+G145,1063029,@AmazonHelp Finding high difficulty in getting the package for the day. No response from support team too 9500034681,,,,,english_or_unknown,,,,,likely_escalation,10.0
+G146,1080348,"@115850 Your fraud systm is very gud,refund my money in bank ac, registered mobile no is 7758967241.hope i erased Amazon word frm my life.",,,,,english_or_unknown,,,,,likely_escalation,10.0
+G147,1089784,"@115850 - where is my order stucked ??  3 days and still haven’t left delhi? Need update 
+
+171-3825101-7498717",,,,,english_or_unknown,,,,,boundary_case,13.0
+G148,1089822,"Fraud activities running in Amazon India, Order no (402-6141121-0449110).  Order was virtually delivered, @53379 , @115850 , @115821",,,,,english_or_unknown,,,,,likely_escalation,10.0
+G149,1094268,"@AmazonHelp pls check, my order # 404-5726716-4364338 not received by myself but your tracking status showing delivered. HOW? Contact imdtly",,,,,english_or_unknown,,,,,boundary_case,13.0
+G150,1095831,@115850 2 times out for Dilevery 😊wrong number in SMS. And attempted Delivery in future time or midnight ???? Kiya huwa hai @115821 ko 🤔🤔 https://t.co/qt2gYuOMWu,,,,,english_or_unknown,,,,,short_noisy,10.0
+G151,1095940,@115850 14 oct was delivery date  which is over . Still waiting  for  for the product.no update available.,,,,,english_or_unknown,,,,,likely_escalation,10.0
+G152,109855,@115850 Trying to reach amazon customer care since last two weeks regarding order 408-3616751-7832318. Tried through email and call but no response. Tried in app help but no relevant option. I pm my number to you to call me regarding the issue.,,,,,english_or_unknown,,,,,likely_escalation,10.0
+G153,109864,@AmazonHelp @115850 Trying reaching amazon customer care since last 3 weeks regarding order 408-3616751-7832318. Tried through email and call but no response. Tried in app help but no relevant option. @115851 #amazon #unhappy #fraud,,,,,english_or_unknown,,,,,likely_escalation,10.0
+G154,1106494,"@115850 
+Pathetic experience with my order id 404-3012954-9093969. Still waiting for a return of 27K",,,,,english_or_unknown,,,,,boundary_case,13.0
+G155,1108240,@138673 @115850 Expected delivery today .. status showing surprisingly not shipped yet but arriving today.When???👎 https://t.co/XqVv80aQ0t,,,,,english_or_unknown,,,,,short_noisy,10.0
+G156,1110861,"@115850 
+my order no 407-7892075-0993107 tracking no 447195674850 is not received til today my order booking date 
+is 07/10/2017 and",,,,,english_or_unknown,,,,,boundary_case,13.0
+G157,1122715,"@AmazonHelp 
+My Order# 407-7892075-0993107
+Tracking # 447195674850 booked 7.10.17 but not received till now",,,,,english_or_unknown,,,,,boundary_case,13.0
+G158,1123332,@115850 I'm not received my order but it's show on your website that it deliver Order# 405-7714668-3126740. Orient Fan refund not came,,,,,english_or_unknown,,,,,boundary_case,13.0
+G159,1123665,"Order# 404-0826305-2650729
+Ordered 11-Sept-17
+Redmi 4 (Black, 64 GB)
+
+Its front camera doesn't work properly. Return required #AmazonIndia",,,,,english_or_unknown,,,,,boundary_case,13.0
+G160,1125175,"@AmazonHelp @118919  I have not received my cashback for order no. 403-7428184-1258738 dated 20 November.
+What r u wanted prove? 
+I have already mentioned detail on my Facebook account 5 hour ago. No response....
+Don't tease me.....",,,,,english_or_unknown,,,,,boundary_case,13.0
+G161,1125285,@115850 order no.407-4654789-4378737 nt been delivered bt showing delivered ystrday no response from your side. Kindly deliver or refund,,,,,english_or_unknown,,,,,boundary_case,13.0
+G162,1134007,"@115850 @115821 where is my order, ur call center is horrible. I can’t chase u anymore give the product or the refund. 407-0490236-8049166",,,,,english_or_unknown,,,,,boundary_case,13.0
+G163,1139819,"@AmazonHelp Guys, I have placed a return request for #404-8643971-2513927 order and waiting for an update. Can you please do the needful.",,,,,english_or_unknown,,,,,boundary_case,13.0
+G164,1144152,How is outside my front door in clear view of the street the safeplace location stated on my parcel??? @115830 @126705 https://t.co/VGk3p5wizO,,,,,english_or_unknown,,,,,short_noisy,10.0
+G165,1145022,"@115850 awaiting refund for order Order: 407-9791971-0123514. more than 2 weeks since i cancelled, still money not received.",,,,,english_or_unknown,,,,,boundary_case,13.0
+G166,1158999,"@115850 Got disappointed, wrong item delivered. When applied for return, no response from Amazon. Order no 406-2540601-7024356",,,,,english_or_unknown,,,,,boundary_case,13.0
+G167,1200824,@115850 not received order no 171-7360326-1361943. False promise for replacement by associate login id MYQNISH52. Poor customer support.,,,,,english_or_unknown,,,,,boundary_case,13.0
+G168,1204899,"@AmazonHelp order-403-9452604-9169931 get item but quality was not good,so i want to return but delivery boy call me and deny to take it .",,,,,english_or_unknown,,,,,boundary_case,13.0
+G169,1204934,"@115850 @AmazonHelp I am waiting for all pending Result. time up now, you declare all pending Result yes or no ??? reply fast @123288 https://t.co/cqklG0oK1F",,,,,english_or_unknown,,,,,short_noisy,10.0
+G170,1208761,@115850 here is Prime delivery time for order ORDER # 406-2506969-8731519. What is the use of @115850 Prime??? https://t.co/2o79JDkneS,,,,,english_or_unknown,,,,,short_noisy,10.0
+G171,1211717,"@115850 I have not received the item but it has been updated in Amazon as package delivered to customer, order #  408-4104118-0933938",,,,,english_or_unknown,,,,,boundary_case,13.0
+G172,1216240,@118919  I have placed an order which says delivered but    I have never received the same.initially they have delayed delivery and  then not even received a product..not expected from Amazon feeling like cheated order I'd 402-2538217-1550759,,,,,english_or_unknown,,,,,boundary_case,13.0
+G173,1221830,"@AmazonHelp 405-5346082-8912369 It's an my product id...
+I don't need cheque I need refund my money back in my bank account ....",,,,,english_or_unknown,,,,,boundary_case,13.0
+G174,1223039,"@AmazonHelp order id 405-8226026-7249114, not delivered, no courier man contacted, falsely updated refused to take , now you are not returning my money, CC say money will return after receiving items, please return my money",,,,,english_or_unknown,,,,,boundary_case,13.0
+G175,1245862,@115850 received a defective product for order no 406-5404751-6251529. Need replacement or return. Broken piece can't be installed. Help.,,,,,english_or_unknown,,,,,boundary_case,13.0
+G176,1246371,"@115821 Very very fraud, 
+Online shopping &amp; online payment 
+Even not received the product 
+402-9266837-9705148
+Payment done online too",,,,,english_or_unknown,,,,,boundary_case,13.0
+G177,1248318,@215765 @AmazonHelp @12339 i never request for late delivery then how you post like this ??? Why put wrong msg ?? https://t.co/7y3WVPICvk,,,,,english_or_unknown,,,,,short_noisy,10.0
+G178,1252975,@115821 fail!!! 2 day shipping is really 4 days to deliver... and I'm getting a bunch of mumbo jumbo from your customer service! @115851 https://t.co/lkB9GxI8Hi,,,,,english_or_unknown,,,,,short_noisy,10.0
+G179,1253362,"@116316 Hi, I have never received this order or a refund for it, can you have a look? Order #: 306-3301478-8770714",,,,,english_or_unknown,,,,,boundary_case,13.0
+G180,1256965,"@AmazonHelp What is the refund status of Order# 406-8719185-6477969? 
+
+It's been 5 days and I do not have any updates.",,,,,english_or_unknown,,,,,boundary_case,13.0
+G181,1261157,"@AmazonHelp Two items shipped separate, due today, delivery firm never received. Order: 204-9937770-9905926 maybe someone could call me.",,,,,english_or_unknown,,,,,boundary_case,13.0
+G182,1264600,"@139570 @416119 Yeah well, I ordered a one plus 5 from your EXCLUSIVE SALES PARTNER AND GOT THIS!!!!!!!! @AmazonHelp DISGUSTING! https://t.co/zMB6ifu8aF",,,,,english_or_unknown,,,,,short_noisy,10.0
+G183,1265092,"@AmazonHelp Another day another order another problem Order # 026-4946477-2030716 should have been here by 1.00pm today but normal crap @115830 service nothing arrived. Why does this keep happening. Where is my order,",,,,,english_or_unknown,,,,,boundary_case,13.0
+G184,1271579,"@AmazonHelp @115850 I havnt got my refund yet...for my order no. 406-5219321-0534711, one of the red bull can was damaged.",,,,,english_or_unknown,,,,,boundary_case,13.0
+G185,127437,@115850 ORDER # 406-2179065-2661962 was supposed to be delivered between 17-22nd Nov. Still waiting for delivery of my package and no reply from seller as well. @AmazonHelp,,,,,english_or_unknown,,,,,boundary_case,13.0
+G186,1274814,"@115850 facing issues wth refund order #403-6403312-9908348, 403-3062193-8546754. Pls sort out long pending. did account updation 3 times",,,,,english_or_unknown,,,,,boundary_case,13.0
+G187,1283107,"@116324 @53957 @115830 Not only that the ticket said it was in the shed, the only shed they had access to is not mine!!! https://t.co/vrowIiRK02",,,,,english_or_unknown,,,,,short_noisy,10.0
+G188,128714,"@AmazonHelp Amazon.in Order  # 408-1528738-0576311
+I ordered shoes which need to be delivered yesterday. I m a prime member and it was assured delivery by yesterday. Delivery agent post wrong update that customer was not reachable when we already had conversation on delivery.",,,,,english_or_unknown,,,,,boundary_case,13.0
+G189,132565,"@115850 I have had an unpleasant experience dealing with Amazon with reference to order no # 408-5217257-7653153, from delivery, to return pickup and now refund has been delayed a lot",,,,,english_or_unknown,,,,,boundary_case,13.0
+G190,1356275,@117795 @115850 What is wrong??? https://t.co/W40o4ix5cn,,,,,english_or_unknown,,,,,short_noisy,11.0
+G191,1357717,"#AmazonIndia delivers junk battery,refuses to entertain return filed after 24 hours of delivery ORDER # 406-2524222-8704336 for Prime member",,,,,english_or_unknown,,,,,boundary_case,13.0
+G192,1357890,@AmazonHelp Now I received another email about the account being locked but no update on the fax I sent. I want to cancel the order 303-8801510-7620364,,,,,english_or_unknown,,,,,boundary_case,13.0
+G193,1363585,"@115850 I received a damaged product from order 402-3609539-4169916. I contacted seller ""ibhejo"" but till now got no response. Please help",,,,,english_or_unknown,,,,,boundary_case,13.0
+G194,2216684,@AmazonHelp @115850 can someone help please ??? https://t.co/eWwCFs3YM8,,,,,english_or_unknown,,,,,short_noisy,11.0
+G195,2551376,@98978 @120540 @98979 #Presidenti arrivato!!! https://t.co/cbALGib7TI,,,,,english_or_unknown,,,,,short_noisy,11.0
+G196,38148,So geht das nicht!!! @116316 @124285 https://t.co/WBR3vJYCuA,,,,,german,,,,,short_noisy,11.0
+G197,530001,@AmazonHelp THERES MORE !!!! @115830 https://t.co/JRdxSl5ghg,,,,,english_or_unknown,,,,,short_noisy,11.0
+G198,752372,"Echt jetzt, @124285 @116316??? https://t.co/gFhgli3pY6",,,,,english_or_unknown,,,,,short_noisy,11.0
+G199,787915,@AmazonHelp 12 hours ??? @115821 @117795 @118919 https://t.co/e5arQ4QJ2n,,,,,english_or_unknown,,,,,short_noisy,11.0
+G200,980710,@AmazonHelp @115830 left by your driver!!! https://t.co/5sF5jFna2b,,,,,english_or_unknown,,,,,short_noisy,11.0

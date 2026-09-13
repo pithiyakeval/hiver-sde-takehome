@@ -1,0 +1,9 @@
+﻿sampling_bucket,target_count,available_candidates,selected_count,target_met
+common_normal,100,350,100,True
+boundary_case,40,350,40,True
+short_noisy,20,350,20,True
+multilingual,15,350,15,True
+multi_intent,10,350,10,True
+likely_escalation,10,350,10,True
+other_unclear_candidate,5,350,5,True
+TOTAL,200,2450,200,True
