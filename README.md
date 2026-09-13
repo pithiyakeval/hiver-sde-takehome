@@ -97,7 +97,7 @@ hiver-sde-takehome/
 └── tests/           # Automated tests
 Quick Start
 1. Clone
-git clone <repository-url>
+git clone <https://github.com/pithiyakeval/hiver-sde-takehome>
 cd hiver-sde-takehome
 2. Create environment
 python -m venv .venv
