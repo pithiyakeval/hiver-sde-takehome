@@ -1,0 +1,6 @@
+failure_mode,count,example,gold_intent,predicted_intent,hypothesis
+delivery_state_boundary_confusion,5,"not delivered but showing delivered",DNR,DL,"Shared delivery vocabulary makes it difficult for TF-IDF to distinguish late delivery from delivered-but-not-received states."
+underlying_issue_vs_requested_resolution,7,"over 10 days late ... cancel and refund",DL,RR,"The classifier does not explicitly separate the underlying problem from the requested remedy."
+followup_language_masking_intent,8,"been after you guys since the past 3 months",CSF,RR,"Follow-up phrases such as no response and please help overlap with many underlying support intents."
+noisy_multilingual_indirect_language,6,"Bonjour, j'ai un gros problème...",OU,CSF,"Sparse lexical features are less robust to multilingual, abbreviated, indirect, and social-media-style messages."
+rare_specific_intents,4,"I haven't received any charger with my product",MWI,DL,"Low-frequency intents provide too few training examples for reliable lexical decision boundaries."

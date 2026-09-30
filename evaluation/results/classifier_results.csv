@@ -1,0 +1,4 @@
+model,evaluation,examples,accuracy,macro_f1
+majority,frozen_test,40,0.2000,0.0256
+word_tfidf_logistic_regression,frozen_test,40,0.3000,0.2651
+char_tfidf_logistic_regression,frozen_test,40,0.3500,0.3179
