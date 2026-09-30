@@ -34,7 +34,7 @@ Sampling script:
 
 Run:
 
-`python -m src.intents.build_golden_sample`
+`python -m evaluation.intents.build_golden_sample`
 
 ## Sampling strategy
 
