@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-DATA_PATH = "data/processed/retrieval_pairs.csv"
+DATA_PATH = "data/processed/retrieval_pairs_safe.csv"
 
 
 class TfidfRetriever:
