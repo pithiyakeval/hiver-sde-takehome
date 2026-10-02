@@ -1,61 +1,112 @@
-import pandas as pd
+from pathlib import Path
 
+import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 
+from src.intents.rules import classify_by_rule
 
-GOLDEN_PATH = "golden/evaluation_train.csv"
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+TRAIN_PATH = PROJECT_ROOT / "golden" / "evaluation_train.csv"
+
+
+RULE_CONFIDENCE = 0.99
 
 
 class IntentClassifier:
-    def __init__(self, golden_path=GOLDEN_PATH):
-        df = pd.read_csv(golden_path)
+    """
+    Hybrid intent classifier.
 
-        df = df.dropna(
-            subset=["customer_text", "Intent"]
-        ).copy()
+    High-precision rules handle distinctive intent patterns first.
+    Messages without a strong rule match are classified using the
+    character n-gram TF-IDF + Logistic Regression model.
 
-        df["customer_text"] = (
-            df["customer_text"]
-            .astype(str)
-            .str.strip()
-        )
+    The ML configuration was selected during development and evaluated
+    separately on the frozen test set.
+    """
 
-        df["Intent"] = (
-            df["Intent"]
-            .astype(str)
-            .str.strip()
-        )
-
+    def __init__(self):
         self.vectorizer = TfidfVectorizer(
             analyzer="char",
             ngram_range=(3, 5),
             min_df=2,
             max_features=50000,
-            # sublinear_tf=True,
         )
 
-        X = self.vectorizer.fit_transform(
-            df["customer_text"]
-        )
-
-        self.model = LogisticRegression(
+        self.classifier = LogisticRegression(
             max_iter=2000,
             class_weight="balanced",
         )
 
-        self.model.fit(X, df["Intent"])
+        self._fit()
 
-    def predict(self, text):
-        vector = self.vectorizer.transform([text])
+    def _fit(self) -> None:
+        """Fit the ML fallback classifier on the development set."""
 
-        intent = self.model.predict(vector)[0]
+        if not TRAIN_PATH.exists():
+            raise FileNotFoundError(
+                f"Training dataset not found: {TRAIN_PATH}"
+            )
 
-        probabilities = self.model.predict_proba(vector)[0]
+        df = pd.read_csv(TRAIN_PATH)
 
-        confidence = probabilities.max()
+        required_columns = {"customer_text", "Intent"}
+        missing_columns = required_columns - set(df.columns)
+
+        if missing_columns:
+            raise ValueError(
+                "Training dataset is missing required columns: "
+                f"{sorted(missing_columns)}"
+            )
+
+        texts = df["customer_text"].fillna("").astype(str)
+        labels = df["Intent"].astype(str).str.strip()
+
+        if texts.empty:
+            raise ValueError("Training dataset contains no examples.")
+
+        features = self.vectorizer.fit_transform(texts)
+        self.classifier.fit(features, labels)
+
+    def predict(self, text: str) -> dict:
+        """
+        Predict the customer's intent.
+
+        High-precision rules are applied first. The ML classifier is used
+        when no strong rule applies.
+        """
+
+        if not isinstance(text, str):
+            raise TypeError("text must be a string")
+
+        text = text.strip()
+
+        if not text:
+            raise ValueError("text must not be empty")
+
+        # --------------------------------------------------------------
+        # High-precision rule layer
+        # --------------------------------------------------------------
+
+        rule_intent = classify_by_rule(text)
+
+        if rule_intent is not None:
+            return {
+                "intent": rule_intent,
+                "confidence": RULE_CONFIDENCE,
+            }
+
+        # --------------------------------------------------------------
+        # ML fallback
+        # --------------------------------------------------------------
+
+        features = self.vectorizer.transform([text])
+        probabilities = self.classifier.predict_proba(features)[0]
+
+        predicted_index = probabilities.argmax()
 
         return {
-            "intent": intent,
-            "confidence": float(confidence),
+            "intent": self.classifier.classes_[predicted_index],
+            "confidence": float(probabilities[predicted_index]),
         }

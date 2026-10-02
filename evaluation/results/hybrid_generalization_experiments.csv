@@ -1,0 +1,3 @@
+model,accuracy,macro_f1
+char_tfidf_plus_rules,0.46875,0.3586538105768875
+word_tfidf_plus_rules,0.49375,0.41214588524835205

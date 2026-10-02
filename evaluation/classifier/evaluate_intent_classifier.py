@@ -2,11 +2,11 @@ import pandas as pd
 
 from sklearn.metrics import accuracy_score, f1_score
 
-from evaluation.intents.classifier import IntentClassifier
+from src.intents.classifier import IntentClassifier
 
 
-# TRAIN_PATH = "golden/evaluation_train.csv"
 TEST_PATH = "golden/evaluation_test.csv"
+OUTPUT_PATH = "evaluation/results/hybrid_predictions.csv"
 
 
 def main():
@@ -31,10 +31,26 @@ def main():
         zero_division=0,
     )
 
+    # Save individual predictions for error analysis
+    prediction_df = test.copy()
+
+    prediction_df["predicted_intent"] = predictions
+
+    prediction_df["correct"] = (
+        prediction_df["Intent"].astype(str).str.strip()
+        == prediction_df["predicted_intent"].astype(str).str.strip()
+    )
+
+    prediction_df.to_csv(
+        OUTPUT_PATH,
+        index=False,
+    )
+
     print("=== Production Intent Classifier ===")
     print(f"Test examples: {len(test)}")
     print(f"Accuracy: {accuracy:.4f}")
     print(f"Macro F1: {macro_f1:.4f}")
+    print(f"Saved predictions to: {OUTPUT_PATH}")
 
 
 if __name__ == "__main__":
