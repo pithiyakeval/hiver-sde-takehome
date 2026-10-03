@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-
+from src.intents.models import IntentPrediction
 from src.intents.rules import classify_by_rule
 
 
@@ -92,10 +92,11 @@ class IntentClassifier:
         rule_intent = classify_by_rule(text)
 
         if rule_intent is not None:
-            return {
-                "intent": rule_intent,
-                "confidence": RULE_CONFIDENCE,
-            }
+            return IntentPrediction(
+                intent=rule_intent,
+                confidence=RULE_CONFIDENCE,
+                reason="A high-precision deterministic rule matched the customer message.",
+            )
 
         # --------------------------------------------------------------
         # ML fallback
@@ -106,7 +107,8 @@ class IntentClassifier:
 
         predicted_index = probabilities.argmax()
 
-        return {
-            "intent": self.classifier.classes_[predicted_index],
-            "confidence": float(probabilities[predicted_index]),
-        }
+        return IntentPrediction(
+            intent=self.classifier.classes_[predicted_index],
+            confidence=float(probabilities[predicted_index]),
+            reason="Intent predicted by the TF-IDF Logistic Regression classifier.",
+        )

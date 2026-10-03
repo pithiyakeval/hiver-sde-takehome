@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from src.escalation.policy import EscalationDecision, EscalationPolicy
 from src.generation.generator import ResponseGenerator
 from src.generation.models import GenerationInput, RetrievedExample
-from src.intents.classifier import IntentClassifier
+from src.intents.models import IntentPrediction
 from src.retrieval.tfidf_retriever import TfidfRetriever
 
 
@@ -12,6 +12,7 @@ class AgentResult:
     customer_message: str
     intent: str
     intent_confidence: float
+    classification_reason: str
     retrieved_examples: list[RetrievedExample]
     draft_response: str
     generation_model: str
@@ -24,7 +25,7 @@ class SupportAgent:
 
     def __init__(
         self,
-        classifier: IntentClassifier,
+        classifier,
         retriever: TfidfRetriever,
         generator: ResponseGenerator,
         escalation_policy: EscalationPolicy,
@@ -55,15 +56,15 @@ class SupportAgent:
 
         generation_input = GenerationInput(
             customer_message=customer_message,
-            intent=classification["intent"],
+            intent=classification.intent,
             retrieved_examples=examples,
         )
 
         generation_result = self.generator.generate(generation_input)
 
         escalation = self.escalation_policy.decide(
-            intent=classification["intent"],
-            intent_confidence=classification["confidence"],
+            intent=classification.intent,
+            intent_confidence=classification.confidence,
             retrieval_similarities=[
                 example.similarity for example in examples
             ],
@@ -72,8 +73,9 @@ class SupportAgent:
 
         return AgentResult(
             customer_message=customer_message,
-            intent=classification["intent"],
-            intent_confidence=classification["confidence"],
+            intent=classification.intent,
+            intent_confidence=classification.confidence,
+            classification_reason=classification.reason,
             retrieved_examples=examples,
             draft_response=generation_result.draft_response,
             generation_model=generation_result.model,

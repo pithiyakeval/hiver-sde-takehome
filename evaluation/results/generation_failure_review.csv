@@ -1,0 +1,14 @@
+example_id
+failure_mode
+severity
+evidence
+hypothesis
+G059,acknowledgement_without_resolution,high,"Acknowledges frustration but provides no concrete resolution step.","Prompt prioritizes concise acknowledgement but does not sufficiently require an actionable next step."
+
+G065,intent_not_directly_addressed,medium,"Response acknowledges gratitude but does not engage with the delivery-promise context.","Historical examples may bias generation toward conversational acknowledgement instead of the current intent."
+
+G071,unnecessary_information_request,high,"Response asks for sensitive transaction details that are not necessary for the requested support response.","The model may overgeneralize troubleshooting patterns from historical support examples."
+
+G072,acknowledgement_without_action,high,"Response acknowledges frustration but provides little actionable guidance.","The generation prompt does not strongly enough prioritize useful next-step guidance."
+
+G115,intent_not_directly_addressed,medium,"Response acknowledges the customer but does not directly address the core issue.","Retrieved examples may contain generic support language that competes with the current customer message."
