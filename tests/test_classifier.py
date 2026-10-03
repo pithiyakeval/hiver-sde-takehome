@@ -1,6 +1,7 @@
 import pytest
 
 from src.intents.classifier import IntentClassifier
+from src.intents.models import IntentPrediction
 
 
 @pytest.fixture(scope="module")
@@ -31,10 +32,10 @@ def test_classifier_predicts_representative_intents(
 
     result = classifier.predict(message)
 
-    assert result["intent"] == expected_intent, (
+    assert result.intent == expected_intent, (
         f"\nMessage: {message}"
         f"\nExpected: {expected_intent}"
-        f"\nPredicted: {result['intent']}"
+        f"\nPredicted: {result.intent}"
     )
 
 
@@ -49,18 +50,20 @@ def test_classifier_predicts_representative_intents(
     ],
 )
 def test_classifier_response_contract(classifier, message):
-    """Prediction should always follow the expected output contract."""
+    """Prediction should always follow the IntentPrediction contract."""
 
     result = classifier.predict(message)
 
-    assert isinstance(result, dict)
-    assert set(result) >= {"intent", "confidence"}
+    assert isinstance(result, IntentPrediction)
 
-    assert isinstance(result["intent"], str)
-    assert result["intent"].strip()
+    assert isinstance(result.intent, str)
+    assert result.intent.strip()
 
-    assert isinstance(result["confidence"], float)
-    assert 0.0 <= result["confidence"] <= 1.0
+    assert isinstance(result.confidence, float)
+    assert 0.0 <= result.confidence <= 1.0
+
+    assert isinstance(result.reason, str)
+    assert result.reason.strip()
 
 
 def test_classifier_returns_deterministic_prediction(classifier):
@@ -71,5 +74,6 @@ def test_classifier_returns_deterministic_prediction(classifier):
     first = classifier.predict(message)
     second = classifier.predict(message)
 
-    assert first["intent"] == second["intent"]
-    assert first["confidence"] == second["confidence"]
+    assert first.intent == second.intent
+    assert first.confidence == second.confidence
+    assert first.reason == second.reason

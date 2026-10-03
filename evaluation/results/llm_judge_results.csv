@@ -1,0 +1,41 @@
+example_id,relevance,correctness,grounding,helpfulness,safety,overall,reason
+G042,3,3,5,3,5,3,Acknowledges intent without overpromising or sensitive details.
+G043,3,3,5,3,5,3,Provides actionable steps without sensitive info or misinformation.
+G049,3,3,5,3,5,3,Partially addresses refund request but lacks specific guidance on email response.
+G050,3,3,5,2,5,3,Provides grounding but lacks actionable next steps for customer.
+G057,3,3,5,4,5,3,Acknowledges intent clearly while requesting clarification effectively.
+G059,3,2,3,2,5,2,Acknowledges frustration but lacks proactive resolution steps.
+G062,3,3,5,3,5,3,Acknowledges frustration but lacks proactive resolution direction.
+G065,3,2,5,2,5,2,Response acknowledges gratitude but lacks direct engagement with delivery promise intent.
+G068,3,3,5,4,5,3,Acknowledges frustration but lacks direct resolution for product page/color changes.
+G070,3,3,5,3,5,3,Acknowledges concern but lacks direct resolution or empathy.
+G071,3,2,5,2,5,2,Acknowledges issue but requests unnecessary sensitive info.
+G072,3,2,5,2,5,2,Acknowledges frustration but lacks empathy and actionable next steps.
+G073,3,3,5,3,5,3,Acknowledges intent but lacks direct verification step for customer confidence.
+G081,3,2,5,3,5,3,Acknowledges issue but lacks direct resolution; redirects to form.
+G082,3,3,5,3,5,3,Acknowledges issue but requests unnecessary order number confirmation.
+G083,3,3,5,2,5,3,Acknowledges intent but lacks proactive alternative suggestions.
+G087,3,2,5,3,5,3,Partially addresses intent but lacks Amazon-specific resources and avoids direct links.
+G089,3,3,5,2,5,3,Acknowledges intent but lacks proactive resolution or follow-up.
+G091,3,3,5,4,5,4,Acknowledges issue clearly but lacks direct DNR-specific guidance.
+G100,3,3,5,3,5,3,Acknowledges issue but lacks specific resolution steps for bubble envelope damage.
+G108,3,2,5,3,5,3,Acknowledges frustration but requests unnecessary order details.
+G115,3,2,5,2,5,2,Acknowledges intent but does not directly address the core issue.
+G118,3,3,5,3,5,3,Acknowledges frustration but requests unnecessary details without clear next step.
+G124,3,3,5,4,5,3,Acknowledges intent warmly without sensitive details or missteps.
+G126,3,3,5,4,5,3,Acknowledges issue clearly but requests unnecessary verification.
+G127,3,2,5,2,5,2,Acknowledges frustration but lacks direct resolution or policy clarification.
+G128,2,2,5,2,5,2,Avoids sensitive info but lacks direct resolution for refund claim.
+G130,3,2,5,2,5,2,Acknowledges frustration but fails to address DNR intent directly.
+G134,3,2,5,3,5,3,Provides direct contact but does not address refund or fraud claim.
+G136,3,2,5,3,5,3,Acknowledges fault but shifts focus to unrelated order details.
+G142,3,3,5,3,5,3,Acknowledges intent but lacks direct cancellation/refund guidance.
+G147,3,3,5,3,5,3,Provides clear tracking link and support contact without sensitive info.
+G154,3,3,5,3,5,3,Acknowledges the issue but lacks direct resolution while avoiding sensitive data.
+G160,3,2,5,2,5,2,Acknowledges issue but shifts focus to unrelated request for email verification.
+G161,3,2,5,2,5,3,Acknowledges issue but lacks proactive resolution or refund options.
+G180,3,3,5,3,5,3,Redirects to correct self-service portal without sensitive info.
+G183,3,3,5,3,5,3,Acknowledges issue but lacks proactive follow-up or order status.
+G184,3,3,5,3,5,3,Acknowledges issue but requests unnecessary sensitive info.
+G186,3,2,5,2,5,2,Acknowledges urgency but lacks proactive resolution.
+G192,3,2,5,3,5,3,Partially addresses intent but lacks direct cancellation guidance.
