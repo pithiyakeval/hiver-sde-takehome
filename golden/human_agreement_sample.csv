@@ -1,0 +1,62 @@
+﻿ID,customer_text,second_annotator_intent,second_annotator_confidence,second_annotator_ambiguous,second_annotator_notes
+G090,@115850 72 hours and still no reply as to why u deduct shipping charges from people who pay in advance and not from COD orders!!!Cheaters,payment_or_charge,high ,no,Question about different shipping charges for prepaid vs COD orders.
+G056,Is this how @115830 delivers parcels nowadays? Pretty shocking for my first order as a new prime member!! https://t.co/8tLazV0rkI,other_or_unclear,medium,yes,Says prime member but not clearify
+G166,"@115850 Got disappointed, wrong item delivered. When applied for return, no response from Amazon. Order no 406-2540601-7024356",return_or_refund,high ,no,Get wrong item and not response from amazon
+G181,"@AmazonHelp Two items shipped separate, due today, delivery firm never received. Order: 204-9937770-9905926 maybe someone could call me.",delivered_not_received,high ,no ,Two items but not delivered
+G082,"@AmazonHelp The other item delivered w/ that order number was delivered, and the rest of the order still appears, with an adjusted invoice.",other_or_unclear,medium ,no ,two items ordered but not clear about the question
+G153,@AmazonHelp @115850 Trying reaching amazon customer care since last 3 weeks regarding order 408-3616751-7832318. Tried through email and call but no response. Tried in app help but no relevant option. @115851 #amazon #unhappy #fraud,customer_service_followup,high ,no ,no response from so much time 
+G182,"@139570 @416119 Yeah well, I ordered a one plus 5 from your EXCLUSIVE SALES PARTNER AND GOT THIS!!!!!!!! @AmazonHelp DISGUSTING! https://t.co/zMB6ifu8aF",other_or_unclear,medium ,no,not clear with what he got
+G116,"@AmazonHelp Hello @AmazonHelp i got my order bt did not get any coupon or prime membership details, hw can i get this? prime membership nt yet activtd?",prime_membership,medium,no ,asking about prime membership
+G047,"@115850 i can see that 10% additional cash back on sbi debit card, plz tell me in details. Will u give me cash back in my a/c  , or what",other_or_unclear,medium,no,asking about the cashback 
+G105,"@AmazonHelp..Order No..404-6800877-5877920
+Item recieved broken. Please get it picked up from shipped address. No option on ur site.",damaged_item_or_package,high ,no,get broken package and asking for the pick up
+G074,@AmazonHelp @357901 Hello. Yes. It was a single order &amp; the two charges were identical. The bank said Amazon's credit was reversed &amp; now I have two charges.,payment_or_charge,high ,no,two charges 
+G111,"@AmazonHelp App is locked in Portrait Mode on iPad Air 2, latest iOS. I troubleshot with Apple, and they said contact you about settings.",product_or_device_help,high ,no ,asking about the setting on air pad
+G068,"The saga of my screwed-up Letters from Wishing Rock (print version of the book) product page continues. Now, the book is available in two colors! And the number of unrelated 5* reviews has doubled!
+@AmazonHelp @115821 https://t.co/fi8CcXULkg",other_or_unclear,medium,no,book details and not clear with question or review
+G005,"@AmazonHelp I was suppose to receive the order on Friday(Oct 20), but saw that it got delayed from Oct 20-24.",delivery_late,high ,no ,delivery late 
+G121,I have still not received my refund for returned item...which supposed to b in my account by 19th Oct. Not the first time. @AmazonHelp,return_or_refund,high ,no,return n refund easy case
+G059,@AmazonHelp I had ordered 2 rakhi sets way back in august... those sets never got delievered neither did i get my money back ... what am i supposed to do ... ? Been after u guys since the past 3 months ... its damn frustrating... and dissappointing too ...,delivery_late,high ,yes ,mix of everything
+G011,So @115850 prime lists/sells at higher than MRP. Caught. Now bribing me wth Rs.100 voucher. Save that for lawyer fees I'd say. @AmazonHelp,other_or_unclear,medium ,no ,unclear with the expression 
+G163,"@AmazonHelp Guys, I have placed a return request for #404-8643971-2513927 order and waiting for an update. Can you please do the needful.",return_or_refund,high ,no ,easy return and refund case
+G193,"@115850 I received a damaged product from order 402-3609539-4169916. I contacted seller ""ibhejo"" but till now got no response. Please help",damaged_item_or_package,high,no ,Customer received a damaged product and the seller has not responded.
+G172,@118919  I have placed an order which says delivered but    I have never received the same.initially they have delayed delivery and  then not even received a product..not expected from Amazon feeling like cheated order I'd 402-2538217-1550759,delivered_not_received,high ,no ,delivered but not received 
+G156,"@115850 
+my order no 407-7892075-0993107 tracking no 447195674850 is not received til today my order booking date 
+is 07/10/2017 and",delivery_late,high ,no ,delivery date missed
+G147,"@115850 - where is my order stucked ??  3 days and still havenâ€™t left delhi? Need update 
+
+171-3825101-7498717",order_status,high ,no ,asking about the status of the order 
+G115,Trying to sign up and test out @117093 - every time I click start trial it just brings me back to â€œmanage your prime membershipâ€,account_or_access,medium ,no ,asking about sign in and sign out
+G151,@115850 14 oct was delivery date  which is over . Still waiting  for  for the product.no update available.,delivery_late,high ,no ,delivery date passed
+G164,How is outside my front door in clear view of the street the safeplace location stated on my parcel??? @115830 @126705 https://t.co/VGk3p5wizO,other_or_unclear,medium ,no,unclear with the expression 
+G044,"@AmazonHelp It was because I bought a UK Kindle book. It reset everything I had linked to my Echos, absolutely EVERYTHING. Sorted it now.",other_or_unclear,medium,no ,not needed information given
+G027,@AmazonHelp Just the regular website. I kind of expect Kindle Unlimited to appear in the dropdown filter.,other_or_unclear,medium,no,unclear with the expression 
+G170,@115850 here is Prime delivery time for order ORDER # 406-2506969-8731519. What is the use of @115850 Prime??? https://t.co/2o79JDkneS,prime_membership,high ,no ,asking benefits of prime membership
+G017,"@AmazonHelp U r gvng rplcmnt n tkng my phn Mon n replacement device will b given 2 me by 29Nov ! Dis is d sheer example of bad cust service, luk into it https://t.co/vfV1MkyVqX",other_or_unclear,medium,no,unclear with the expression 
+G137,@AmazonHelp I updated a card on my account to re-buy a kindle book. Payment has been taken but the book not downloaded. Pls can you help? TY,payment_or_charge,high ,no,asking about the book download and payment is done
+G152,@115850 Trying to reach amazon customer care since last two weeks regarding order 408-3616751-7832318.Â Tried through email and call but no response. Tried in app help but no relevant option. I pm my number to you to call me regarding the issue.,customer_service_followup,medium ,no ,tried from various app to connect 
+G108,@amazonhelp tried prime to get order for today. Waited all day for â€˜out for deliveryâ€™ &amp; not turned up. 40 min call to get a refund. Rubbish!,other_or_unclear,medium ,no,mix of everything
+G133,"ORDER NOT DELIVERED WORST EXPERIENCE WITH AMAZON!!!@
+booked remi y1 on 22nov from wednesday sale,order  not delivered nd got cancelled aftr 10 days of shippment. mr amazon i want my phone. worst service, i ever recieved. once in weekend sale.
+@115821  @AmazonHelp  @138673 https://t.co/8fKcpFvzcx",delivery_promise,high,no ,didn’t get delivery
+G102,Got slammed with a cold out of nowhere &amp;spent weekend stuck on the couch. @115821 Prime same day delivery has been a lifesaverðŸ™ŒðŸ½,prime_membership,medium,no,good feedback
+G077,@AmazonHelp hi i tried to change my login twice and now I can not log in at all. what can I do? I have no access to my account.,account_or_access,high,no ,account access login
+G135,"@AmazonHelp I had accidentally ordered a wrong item, only getting to know after delivery and payment. No option for refunds!? WHY?",return_or_refund,high ,no ,wrong item but asking for refund 
+G062,Been trying to get information about my  @115821 account for a whole year now and still feel like Iâ€™m talking to a wall everytime I call.,account_or_access,high ,no,account details asking
+G073,"No dai ma adesso #Amazon consegna anche la domenica? Non ci credo!
+Adesso compro qualcosa solo per provare se Ã¨ vero! https://t.co/kn7eam4gPW",delivery_promise,high,no,Customer is asking whether Sunday delivery is available.
+G066,"@357788 @115830 Two deliveries in as many weeks, missing products, wrong items, battered boxes, @115830 going down hill, wont be ordering high value items again from you. https://t.co/juBpIUCVLJ",missing_or_wrong_item,high ,no ,missing items 
+G034,"@AmazonHelp I did visit Contact Us, but der is no such tab which can resolve the issue. Only Order details
+Return Order details. No address for collecti",return_or_refund,high ,no ,trying to contact but didnnt get return thing 
+G041,@AmazonHelp Iâ€™m not paying again for product Ive already paid for on next day delivery. If you canâ€™t deliver the First I donâ€™t trust you to deliver no 2,payment_or_charge,high ,no ,charged twice 
+G081,I havenâ€™t received any charger with my product @164902 charge 3 ordered during sale. charging it with USB battery doesnâ€™t last @115850 1,payment_or_charge,high,no ,charged thrice
+G100,@AmazonHelp My item was damaged during shipping because it was mailed in a bubble envelope. How will you help me?,damaged_item_or_package,high ,no ,damaged package
+G032,"@AmazonHelp Sent DM of the agents number, call him and check where the package is.. else refund my extra amount!",order_status,high ,no ,asking about the package
+G061,@AmazonHelp Account has been on hold for what seems like forever (a year) ðŸ˜© I wanna Christmas shoppppppp,account_or_access,high ,no,asking about the account details 
+G019,Hola @116928. Â¿CÃ³mo hablo con un responsable o encargado de un pedido de Prime? Por telefono es la tercera vez que cuelgan...,customer_service_followup,high ,no,Customer wants to reach a responsible support person after repeated phone-call disconnections.
+G134,403-8415773-6460323 emi charged on cancelled order ! No refund processed to bank ! Fraud by amazon #AmazonIndia #Amazon,return_or_refund,high ,no,cancel order and not getting refund for that
+G148,"Fraud activities running in Amazon India, Order no (402-6141121-0449110).  Order was virtually delivered, @53379 , @115850 , @115821",other_or_unclear,high ,no,comment on the other activities that is not good 
+G122,"@117086 Tenho jÃ¡ vÃ¡rios livros comprados e uso hoje tanto o app quanto o Kindle. Mas ao mudar de cel notei que o livro que ando lendo no app nÃ£o estÃ¡ como comprado, apenas como amostra. Que faÃ§o?",product_or_device_help,high ,no,Previously purchased Kindle book appears only as a sample after changing device.
+G050,"
+                                                                                                                                                                                                                                                                Tracking B54 Inspite of Address, package not delivered to me. Asking B52to contact amazon. Now to contact links found",delivery_late,medium ,yes ,"Package has not been received, but the message does not clearly state whether the expected delivery date has passed."
