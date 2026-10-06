@@ -15,7 +15,7 @@ def main():
     classifier = IntentClassifier()
 
     predictions = [
-        classifier.predict(text)["intent"]
+        classifier.predict(text).intent
         for text in test["customer_text"].fillna("")
     ]
 
