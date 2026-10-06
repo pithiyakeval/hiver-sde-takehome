@@ -53,6 +53,33 @@ def classify_by_rule(text: str) -> Optional[str]:
     if delivered_signal and not_received_signal:
         return "DNR"
 
+        # ------------------------------------------------------------------
+    # General order status / location -> OS
+    # ------------------------------------------------------------------
+
+    order_status_signal = re.search(
+        r"\b("
+        r"where is my order|"
+        r"where's my order|"
+        r"where is the order|"
+        r"where's the order|"
+        r"where is my package|"
+        r"where's my package|"
+        r"where is my parcel|"
+        r"where's my parcel|"
+        r"order status|"
+        r"track my order|"
+        r"tracking my order|"
+        r"track the order|"
+        r"order tracking|"
+        r"where can i track my order"
+        r")\b",
+        text,
+    )
+
+    if order_status_signal:
+        return "OS"
+
     # ------------------------------------------------------------------
     # Damaged item / package -> DIP
     # ------------------------------------------------------------------
