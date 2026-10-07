@@ -20,6 +20,7 @@ class RetrievedCase(BaseModel):
 class EscalationResult(BaseModel):
     should_escalate: bool
     reason: str
+    reason_code: str
 
 class PerformanceMetrics(BaseModel):
     classification_ms: float

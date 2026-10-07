@@ -6,6 +6,7 @@ import re
 class EscalationDecision:
     should_escalate: bool
     reason: str
+    reason_code: str
 
 
 class EscalationPolicy:
@@ -31,53 +32,62 @@ class EscalationPolicy:
             return EscalationDecision(
                 True,
                 "Customer request could not be mapped to a supported intent.",
+                "other_unclear",
             )
 
         if intent_confidence < self.intent_confidence_threshold:
             return EscalationDecision(
                 True,
                 "Intent classification confidence is below the calibrated threshold.",
+                "low_confidence",
             )
 
         if not retrieval_similarities:
             return EscalationDecision(
                 True,
                 "No historical resolution evidence was retrieved.",
+                "no_retrieval_evidence",
             )
 
         if max(retrieval_similarities) < self.retrieval_similarity_threshold:
             return EscalationDecision(
                 True,
                 "Retrieved historical examples are not sufficiently similar to the customer request.",
+                "low_retrieval_similarity",
             )
 
         if self._contains_financial_or_security_risk(text):
             return EscalationDecision(
                 True,
                 "Financial or security-sensitive issue requires human review.",
+                "financial_security_risk",
             )
 
         if intent == "delivered_not_received":
             return EscalationDecision(
                 True,
                 "Customer reports a delivery marked delivered but not received.",
+                "delivered_not_received",
             )
 
         if self._contains_repeated_unresolved_signal(text):
             return EscalationDecision(
                 True,
                 "Customer reports a repeated or prolonged unresolved support issue.",
+                "repeated_unresolved",
             )
 
         if self._contains_long_pending_refund(text):
             return EscalationDecision(
                 True,
                 "Refund issue is described as prolonged or still unresolved.",
+                "long_pending_refund",
             )
 
         return EscalationDecision(
             False,
             "Intent confidence, historical evidence, and escalation risk signals meet the configured policy.",
+            "policy_pass",
         )
 
     @staticmethod

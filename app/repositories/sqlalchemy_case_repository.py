@@ -156,6 +156,7 @@ class SqlAlchemyCaseRepository(CaseRepository):
             grounded=result.grounded,
             should_escalate=result.escalation.should_escalate,
             escalation_reason=result.escalation.reason,
+            escalation_reason_code=result.escalation.reason_code,
             classification_ms=result.timing.classification_ms,
             retrieval_ms=result.timing.retrieval_ms,
             generation_ms=result.timing.generation_ms,
@@ -190,6 +191,7 @@ class SqlAlchemyCaseRepository(CaseRepository):
         escalation = EscalationDecision(
             should_escalate=model.should_escalate,
             reason=model.escalation_reason,
+            reason_code=model.escalation_reason_code,
         )
 
         timing = AgentTiming(
