@@ -1,0 +1,9 @@
+# ==============================
+# AI Support Agent
+# UI Dependencies
+# ==============================
+
+-r requirements.txt
+
+# UI
+streamlit==1.65.0

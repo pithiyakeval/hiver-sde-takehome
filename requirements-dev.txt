@@ -1,0 +1,9 @@
+# ==============================
+# AI Support Agent
+# Development Dependencies
+# ==============================
+
+-r requirements.txt
+
+# Testing
+pytest==9.1.1
