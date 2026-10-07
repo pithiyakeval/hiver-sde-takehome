@@ -80,3 +80,7 @@ desktop.ini
 *.temp
 *.bak
 *.swp
+
+
+support.db
+support.db-*
