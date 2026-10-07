@@ -1,7 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse,Response
-from fastapi.responses import JSONResponse
 from app.api.errors import AppError
 from app.api.routes.support import router as support_router
 from app.config import get_settings
@@ -43,28 +42,6 @@ async def add_request_id(request: Request, call_next):
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
     return await request_logging_middleware(request, call_next)
-
-@app.exception_handler(AppError)
-async def handle_app_error(
-    request: Request,
-    exc: AppError,
-) -> JSONResponse:
-    request_id = getattr(
-        request.state,
-        "request_id",
-        "unknown",
-    )
-
-    return JSONResponse(
-        status_code=exc.status_code,
-        content={
-            "code": exc.code,
-            "message": exc.message,
-            "request_id": request_id,
-            "details": exc.details,
-        },
-    )
-
 
 @app.exception_handler(RequestValidationError)
 async def handle_validation_error(

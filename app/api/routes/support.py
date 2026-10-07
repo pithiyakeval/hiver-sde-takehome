@@ -66,9 +66,10 @@ def _case_to_response(case: SupportCase) -> SupportAnalyzeResponse:
         generation_model=result.generation_model,
         grounded=result.grounded,
         escalation=EscalationResult(
-            should_escalate=result.escalation.should_escalate,
-            reason=result.escalation.reason,
-        ),
+        should_escalate=result.escalation.should_escalate,
+        reason=result.escalation.reason,
+        reason_code=result.escalation.reason_code,
+    ),
     )
 
 
@@ -94,6 +95,7 @@ def _case_to_list_item(case: SupportCase) -> SupportCaseListItem:
         escalation=EscalationResult(
             should_escalate=result.escalation.should_escalate,
             reason=result.escalation.reason,
+            reason_code=result.escalation.reason_code,
         ),
         performance=PerformanceMetrics(
             classification_ms=result.timing.classification_ms,

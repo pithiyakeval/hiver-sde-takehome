@@ -174,7 +174,7 @@ class SupportService:
         if result.escalation.should_escalate:
             SUPPORT_ESCALATIONS_TOTAL.inc()
 
-        if result.intent_confidence < 0.08:
+        if result.escalation.reason_code == "low_confidence":
             SUPPORT_LOW_CONFIDENCE_TOTAL.inc()
 
     @staticmethod
@@ -221,8 +221,8 @@ class SupportService:
         escalation = EscalationResult(
             should_escalate=result.escalation.should_escalate,
             reason=result.escalation.reason,
+            reason_code=result.escalation.reason_code,
         )
-
         performance = PerformanceMetrics(
             classification_ms=result.timing.classification_ms,
             retrieval_ms=result.timing.retrieval_ms,
@@ -272,6 +272,7 @@ class SupportService:
         escalation = EscalationResult(
             should_escalate=result.escalation.should_escalate,
             reason=result.escalation.reason,
+            reason_code=result.escalation.reason_code,
         )
 
         # -------------------------------------------------------------

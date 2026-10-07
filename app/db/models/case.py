@@ -112,6 +112,11 @@ class CaseModel(Base):
         nullable=False,
     )
 
+    escalation_reason_code: Mapped[str] = mapped_column(
+        String(64),
+        nullable=False,
+    )
+
     # ---------------------------------------------------------
     # AI pipeline performance
     # ---------------------------------------------------------
