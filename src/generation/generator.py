@@ -3,9 +3,31 @@ from src.generation.prompts import SYSTEM_PROMPT, build_generation_prompt
 from src.generation.provider import LLMProvider
 from src.generation.response_cleaner import clean_model_response
 
-
 class ResponseGenerator:
     """Generates safe customer-support responses."""
+
+    DETERMINISTIC_RESPONSES = {
+        "order_status": (
+            "You can check your latest order status and tracking information "
+            "in your order details. If you need further assistance, please "
+            "contact support."
+        ),
+        "delivery_late": (
+            "Sorry your delivery is taking longer than expected. Please "
+            "check the latest tracking information in your order details, "
+            "and contact support if you need further assistance."
+        ),
+        "delivery_promise": (
+            "Sorry the expected delivery time was missed. Please check the "
+            "latest order and tracking information, and contact support "
+            "for further assistance."
+        ),
+        "prime_membership": (
+            "For Prime membership questions, please check your membership "
+            "details in your account or contact support for account-specific "
+            "assistance."
+        ),
+    }
 
     def __init__(self, provider: LLMProvider):
         self.provider = provider
@@ -42,22 +64,26 @@ class ResponseGenerator:
         """
         Produce a fast response without calling an LLM.
 
-        The historical support response is treated as the source material.
-        We remove Twitter-specific addressing/signatures but do not invent
-        new support actions or facts.
+        Historical responses are used only as evidence that the intent has
+        historical support. They are NEVER reused as response text because
+        they may contain customer-specific actions, identifiers, links,
+        account information, or claims about actions taken for another
+        customer.
         """
 
-        response = self._clean_historical_response(
-            historical_response
+        has_historical_evidence = bool(
+            historical_response and historical_response.strip()
         )
 
-        if not response:
+        response = self.DETERMINISTIC_RESPONSES.get(intent)
+
+        if not response or not has_historical_evidence:
             response = self._safe_fallback(customer_message)
 
         return GenerationResult(
             draft_response=response,
             model="DeterministicResponseGenerator",
-            grounded=bool(historical_response),
+            grounded=has_historical_evidence,
         )
 
     def generate_fallback(
@@ -76,50 +102,6 @@ class ResponseGenerator:
             model="FallbackResponseGenerator",
             grounded=False,
         )
-
-    @staticmethod
-    def _clean_historical_response(response: str) -> str:
-        """
-        Remove obvious Twitter-specific artifacts from historical replies.
-
-        This method intentionally performs only conservative transformations.
-        It must not invent support policies or customer-specific information.
-        """
-
-        if not response:
-            return ""
-
-        cleaned = response.strip()
-
-        # Remove leading Twitter mentions such as:
-        # @176370
-        while cleaned.startswith("@"):
-            parts = cleaned.split(maxsplit=1)
-
-            if len(parts) != 2:
-                break
-
-            mention = parts[0]
-
-            # Only remove simple numeric Twitter-style handles.
-            if mention[1:].isdigit():
-                cleaned = parts[1].strip()
-            else:
-                break
-
-        # Remove historical agent signatures such as:
-        # ^EM
-        # ^AS
-        # ^GD
-        import re
-
-        cleaned = re.sub(
-            r"\s+\^[A-Za-z]{1,4}\s*$",
-            "",
-            cleaned,
-        ).strip()
-
-        return cleaned
 
     @staticmethod
     def _safe_fallback(customer_message: str) -> str:

@@ -1,458 +1,570 @@
 # Hiver SDE Take-Home — AI Support Agent
 
-An evaluation-driven AI customer-support agent built on the **Customer Support on Twitter** dataset.
+Evaluation-driven AI customer-support agent built on the **Customer Support on Twitter** dataset.
 
-The system classifies incoming customer messages, retrieves historically similar support interactions, drafts a concise customer-facing response grounded in historical resolutions, and decides whether the case should be handled automatically or escalated to a human.
+The system:
 
-The implementation follows an **evaluation-first** approach: each major component has a measurable baseline, reproducible evaluation artifacts, and documented failure modes.
+- classifies customer messages into support intents
+- retrieves similar historical AmazonHelp interactions
+- drafts a grounded customer-facing response
+- decides whether to auto-handle or escalate
+- persists cases and audit history through a FastAPI service
+
+Built with **Python, FastAPI, Ollama, Ministral 3B, TF-IDF, SQLAlchemy and SQLite**.
 
 ---
 
-## 1. Problem Overview
-
-Customer-support teams receive large volumes of messages that differ in wording but often represent recurring support problems.
-
-This project explores a lightweight AI support-agent pipeline that can:
-
-1. Identify the customer's intent.
-2. Retrieve historically relevant support interactions.
-3. Generate a concise response grounded in historical resolutions.
-4. Decide whether the request is suitable for automated handling or should be escalated to a human.
-
-### Selected Brand
-
-**AmazonHelp**
-
-The Customer Support on Twitter dataset contains support interactions from multiple brands. `AmazonHelp` was selected as the single support account used for this project.
-
-The resulting conversation corpus contains approximately **168K direct customer → AmazonHelp response pairs**.
-
-### High-Level Architecture
+## What it does
 
 ```text
 Customer Message
        │
        ▼
-┌──────────────────────┐
-│ Intent Classification│
-│     Ministral 3B     │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│ Historical Retrieval │
-│       TF-IDF         │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│ Response Generation  │
-│     Ministral 3B     │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│ Escalation Policy    │
-└──────────┬───────────┘
-           │
-           ▼
-      Agent Result
+Intent Classification
+       │
+       ▼
+Historical Retrieval
+       │
+       ▼
+Response Generation
+       │
+       ▼
+Risk-aware Escalation
+       │
+       ▼
+Support Case + Audit History
+```
 
-2. Headline Evaluation Results
-Evaluation was performed on a 40-example human-labelled frozen evaluation split.
-Component	Metric	Result
-Intent classification	Accuracy	75.0%
-Intent classification	Macro F1	74.38%
-Escalation policy	Accuracy	65.0%
-LLM-as-judge	Overall	2.77 / 5
-LLM-as-judge	Correctness	2.58 / 5
-LLM-as-judge	Helpfulness	2.77 / 5
-LLM-as-judge	Grounding	4.95 / 5
-LLM-as-judge	Safety	5.00 / 5
+The project uses **AmazonHelp** as the target support account.
 
+Dataset subset:
 
-Important evaluation caveat: The frozen evaluation set was consulted during iterative development. These results should therefore not be interpreted as results from a completely untouched final holdout.
+| | Approx. |
+|---|---:|
+| AmazonHelp support tweets | 169K |
+| Customer → AmazonHelp response pairs | 168K |
+| Unique customer authors | 71K |
 
-The LLM-as-judge scores are evaluation signals rather than independent human ground truth.
-3. Prerequisites
-Tool	Version
-Git	Any recent version
-Python	3.x
-Ollama	Latest
-Ministral	ministral-3:3b
+---
 
+## Results
 
-The generation and LLM-classification components use a local Ollama model, so no external LLM API key is required.
-4. Installation
-Clone the repository
+The current development-stage evaluation uses a manually labelled 200-example
+golden set with a 160-example development split and a 40-example evaluation
+split.
+
+### Intent Classification
+
+| Model | Accuracy | Macro F1 |
+|---|---:|---:|
+| Majority class | 20.0% | 2.56% |
+| Word TF-IDF + Logistic Regression | 30.0% | 26.51% |
+| Char TF-IDF + Logistic Regression | 35.0% | 31.79% |
+| Hybrid rules + Char TF-IDF | 37.5% | 36.77% |
+| Standalone LLM classifier | 62.5% | 62.84% |
+
+### End-to-End Agent
+
+| Metric | Result |
+|---|---:|
+| Intent accuracy | **75.0%** |
+| Intent macro F1 | **74.38%** |
+| Escalation accuracy | **65.0%** |
+| Top-1 retrieval relevant | **90.0%** |
+| Top-1 retrieval useful | **82.0%** |
+| LLM-judge grounding | **4.95 / 5** |
+| LLM-judge safety | **5.00 / 5** |
+
+The standalone LLM result measures classification in isolation. The 75.0%
+result measures the complete agent's final intent output after the production
+classification pipeline and deterministic decision logic.
+
+> **Evaluation caveat:** the 40-example evaluation split was consulted during
+> iterative development. It is therefore development-stage evidence, not an
+> untouched final holdout.
+
+---
+
+## Architecture
+
+The project is intentionally split into an AI pipeline and a production-style
+API layer.
+
+### AI pipeline
+
+```text
+src/
+├── intents/          # Intent classification
+├── retrieval/       # Historical interaction retrieval
+├── generation/      # Grounded response generation
+├── escalation/      # Auto-handle / escalation policy
+└── pipeline/        # End-to-end orchestration
+```
+
+### API and persistence
+
+```text
+app/
+├── api/             # HTTP routes and error handling
+├── services/        # Application/business logic
+├── repositories/    # Persistence abstractions
+├── models/          # Domain models
+├── schemas/         # API schemas
+└── db/              # SQLAlchemy database layer
+```
+
+The API uses:
+
+- FastAPI
+- SQLAlchemy
+- SQLite
+- dependency injection
+- repository interfaces
+- Unit of Work transactions
+- explicit case-state transitions
+- persistent audit events
+
+### Case lifecycle
+
+```text
+READY_FOR_REVIEW
+       │
+       ├── approve ──► AUTO_HANDLED ──► RESOLVED
+       │
+       └── escalate ─► ESCALATED ─────► RESOLVED
+```
+
+Invalid state transitions return a structured `409` response.
+
+Important transitions create audit events:
+
+```text
+CASE_CREATED
+CASE_APPROVED
+CASE_ESCALATED
+CASE_RESOLVED
+```
+
+---
+
+## Evaluation
+
+The evaluation harness combines:
+
+- human-labelled intent examples
+- classical ML baselines
+- standalone LLM classification
+- end-to-end agent evaluation
+- human-reviewed retrieval evaluation
+- LLM-as-judge response evaluation
+- manual failure analysis
+
+### Golden set
+
+The 200 labelled examples intentionally cover:
+
+- common requests
+- delivery boundary cases
+- noisy and short messages
+- multilingual messages
+- multi-intent requests
+- likely escalation cases
+- unclear requests
+
+The final split is:
+
+```text
+160 development examples
+40 evaluation examples
+```
+
+### Retrieval
+
+Historical AmazonHelp customer → support pairs are indexed using TF-IDF.
+
+Exact-overlap examples were removed from the retrieval corpus to reduce direct
+evaluation leakage.
+
+Human review over 50 golden queries:
+
+| Metric | Result |
+|---|---:|
+| Top-1 relevant | 90.0% |
+| Top-1 useful | 82.0% |
+| Top-3 relevant | 88.7% |
+| Top-3 useful | 79.3% |
+
+### LLM-as-judge
+
+Generated responses were evaluated for relevance, correctness, grounding,
+helpfulness and safety.
+
+| Dimension | Score |
+|---|---:|
+| Relevance | 2.98 / 5 |
+| Correctness | 2.58 / 5 |
+| Grounding | 4.95 / 5 |
+| Helpfulness | 2.78 / 5 |
+| Safety | 5.00 / 5 |
+| Overall | 2.78 / 5 |
+
+LLM-as-judge scores are treated as evaluation signals rather than independent
+human ground truth.
+
+---
+
+## Intent taxonomy
+
+The final taxonomy contains 13 intents:
+
+| Code | Intent | Description |
+|---|---|---|
+| OS | `order_status` | Current order status/location |
+| DL | `delivery_late` | Expected delivery date has passed |
+| DNR | `delivered_not_received` | Tracking says delivered but customer did not receive it |
+| DP | `delivery_promise` | Promised/guaranteed delivery was not met |
+| MWI | `missing_or_wrong_item` | Missing, incorrect, or wrong item |
+| DIP | `damaged_item_or_package` | Damaged item/package |
+| RR | `return_or_refund` | Return, refund or cancellation |
+| PC | `payment_or_charge` | Payment/billing/transaction issue |
+| PM | `prime_membership` | Prime membership issue |
+| AA | `account_or_access` | Account/login/access issue |
+| PDH | `product_or_device_help` | Product/device help |
+| CSF | `customer_service_followup` | Follow-up on existing support |
+| OU | `other_or_unclear` | Ambiguous or unsupported request |
+
+The most important delivery boundaries are:
+
+```text
+OS  → "Where is my order?"
+
+DL  → "The expected delivery date has passed."
+
+DNR → "Tracking says delivered, but I did not receive it."
+
+DP  → "A promised or guaranteed delivery commitment was not met."
+```
+
+These boundaries were explicitly included in the annotation guidelines because
+they are a recurring source of classifier errors.
+
+---
+
+## Quickstart
+
+### Prerequisites
+
+- Python 3.x
+- Git
+- Ollama
+- `ministral-3:3b`
+
+### Clone
+
+```bash
 git clone https://github.com/pithiyakeval/hiver-sde-takehome.git
 cd hiver-sde-takehome
+```
 
-Create a virtual environment
-Windows
+### Create environment
+
+#### Windows
+
+```powershell
 python -m venv .venv
 .venv\Scripts\Activate.ps1
+```
 
-macOS / Linux
+#### macOS / Linux
+
+```bash
 python -m venv .venv
 source .venv/bin/activate
+```
 
-Install dependencies
+### Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-5. Dataset
-This project uses the Kaggle Customer Support on Twitter dataset.
-Dataset:
-thoughtvector/customer-support-on-twitter
+### Dataset
 
-The raw dataset is expected as:
+Download the Kaggle **Customer Support on Twitter** dataset and place:
+
+```text
 twcs.csv
+```
 
-The dataset is used to:
-- identify support accounts
-- select AmazonHelp
-- reconstruct direct customer → support response pairs
-- explore candidate intent structure
-- build the historical retrieval corpus
-- construct the human-labelled evaluation set
-Dataset scale
-The original dataset contains approximately:
-2.8M tweets
-108 support accounts
+in the project root.
 
-For this project, the selected AmazonHelp subset contains approximately:
-169K AmazonHelp support tweets
-168K direct customer → AmazonHelp response pairs
-71K unique customer authors
+### Ollama
 
-6. Local LLM Setup
-The LLM-powered agent uses:
-ministral-3:3b
-
-Verify Ollama
-ollama list
-
-Pull the model
-If it is not already installed:
+```bash
 ollama pull ministral-3:3b
+```
 
-Verify the model
+Verify:
+
+```bash
 ollama run ministral-3:3b "Say OK"
+```
 
-The application connects to the local Ollama server at:
+The application uses:
+
+```text
 http://127.0.0.1:11434
+```
 
-No API key is required.
-7. Intent Taxonomy
-The taxonomy was derived from the selected AmazonHelp customer messages using unsupervised topic exploration followed by manual review.
-The final evaluation taxonomy contains 13 intents.
-Code	Intent	Description
-OS	order_status	Customer asks where an order currently is
-DL	delivery_late	Expected delivery date has passed
-DNR	delivered_not_received	Tracking says delivered but customer did not receive it
-DP	delivery_promise	A promised or guaranteed delivery commitment was not met
-MWI	missing_or_wrong_item	Item is missing, incorrect, or different from ordered
-DIP	damaged_item_or_package	Item or package arrived damaged
-RR	return_or_refund	Return, refund, cancellation, or related request
-PC	payment_or_charge	Payment, charge, billing, or transaction issue
-PM	prime_membership	Prime membership-related request
-AA	account_or_access	Account, login, or access issue
-PDH	product_or_device_help	Product/device usage or troubleshooting
-CSF	customer_service_followup	Follow-up on an existing support interaction
-OU	other_or_unclear	Unsupported, ambiguous, or unclear request
+No external LLM API key is required.
 
+---
 
-Delivery-state boundaries
-A particularly important distinction is between these delivery-related intents:
-- OS: "Where is my order?"
-- DL: "The expected delivery date has passed."
-- DNR: "Tracking says delivered, but I did not receive it."
-- DP: "A promised or guaranteed delivery commitment was not met."
-These boundaries were explicitly incorporated into the classification guidelines and evaluation.
-8. Golden Evaluation Dataset
-The project includes a manually labelled golden set of 200 examples.
-The sampling intentionally includes:
-- common customer requests
-- boundary cases
-- short/noisy messages
-- multilingual messages
-- multi-intent messages
-- likely escalation cases
-- unclear/other requests
-The final split is:
-160 examples — development/train split
-40 examples  — frozen evaluation split
+## Run the API
 
-The labelling methodology and taxonomy definitions are documented in:
-golden/labeling_notes.md
-golden/annotation_guidelines.md
+```bash
+uvicorn app.main:app --reload
+```
 
-The evaluation set is also validated for duplicate customer messages before evaluation.
-9. Baselines
-Classical baselines were established as reference points for the intent-classification task.
-Model	Accuracy	Macro F1
-Majority class	20.00%	2.56%
-Word TF-IDF + Logistic Regression	30.00%	26.51%
-Char TF-IDF + Logistic Regression	35.00%	31.79%
-LLM classifier	75.00%	74.38%
+API base:
 
+```text
+http://127.0.0.1:8000/api/v1
+```
 
-The classical models provide reference points rather than production alternatives.
-The char-level TF-IDF baseline was selected after development cross-validation and then evaluated on the frozen split.
-10. Historical Retrieval
-Response generation uses TF-IDF retrieval over historical AmazonHelp customer → support response pairs.
-To reduce direct evaluation leakage, exact-overlap examples were removed from the retrieval corpus.
-Human-reviewed retrieval evaluation
-A manually reviewed sample of 50 golden queries was evaluated against the top retrieved historical examples.
-Metric	Result
-Top-1 relevant	90.0%
-Top-1 useful	82.0%
-Top-3 relevant	88.7%
-Top-3 useful	79.3%
+### Endpoints
 
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `POST` | `/support/analyze` | Analyze a customer message |
+| `GET` | `/support/cases` | List support cases |
+| `GET` | `/support/cases/{case_id}` | Get a case |
+| `GET` | `/support/cases/{case_id}/events` | Get audit events |
+| `POST` | `/support/cases/{case_id}/approve` | Approve automated handling |
+| `POST` | `/support/cases/{case_id}/escalate` | Escalate to human |
+| `POST` | `/support/cases/{case_id}/resolve` | Resolve a case |
 
-These are human-reviewed retrieval metrics rather than automated semantic-similarity scores.
-11. Response Generation
-The response-generation pipeline uses the retrieved historical interactions as supporting evidence.
-The generation prompt explicitly instructs the model to:
-- treat the current customer message as the primary source of truth
-- use historical examples as evidence rather than templates to copy blindly
-- avoid inventing policies, prices, refunds, credits, delivery dates, or account information
-- avoid claiming live access or actions that were not actually performed
-- avoid exposing information from other customers
-- ask only for information necessary to proceed
-- produce a concise customer-facing response
-The current generation model is:
-ministral-3:3b
+### Example
 
-12. Escalation Policy
-The escalation layer combines classifier confidence, retrieval quality, intent-specific risk, and explicit escalation rules.
-A case can be escalated when, for example:
-- the intent is other_or_unclear
-- classifier confidence is below the configured threshold
-- no useful historical example is retrieved
-- retrieval similarity is too low
-- the request involves financial/security risk
-- the case indicates a delivered-but-not-received issue
-- the customer indicates a repeated or prolonged unresolved issue
-- a refund has been pending for an extended period
-The policy is intentionally conservative around cases where automated handling could be unreliable or risky.
-13. End-to-End Evaluation
-The complete agent is evaluated through:
-evaluation/evaluate_agent.py
+```bash
+curl -X POST http://127.0.0.1:8000/api/v1/support/analyze \
+  -H "Content-Type: application/json" \
+  -d "{\"customer_message\":\"My package says delivered but I never received it.\"}"
+```
 
-The evaluation pipeline runs:
-Customer message
-       ↓
-LLM intent classifier
-       ↓
-TF-IDF historical retrieval
-       ↓
-LLM response generation
-       ↓
-Escalation policy
-       ↓
-Evaluation artifacts
+The response includes:
 
-Run:
+- predicted intent
+- confidence
+- classification reason
+- retrieved historical examples
+- generated draft
+- grounding status
+- escalation decision
+- performance timings
+- persistent case ID
+
+---
+
+## Reproduce the evaluation
+
+Run the complete agent evaluation:
+
+```bash
 python -m evaluation.evaluate_agent
+```
 
-Predictions are written to:
-evaluation/results/agent_predictions.csv
+Calculate metrics:
 
-Metrics can then be calculated with:
+```bash
 python -m evaluation.analysis.evaluate_agent_metrics
+```
 
-14. LLM-as-Judge Evaluation
-Generated responses are evaluated using an LLM-as-judge rubric covering:
-- relevance
-- correctness
-- grounding
-- helpfulness
-- safety
-- overall quality
-Current results on the 40-example evaluation set:
-Dimension	Score
-Relevance	2.98 / 5
-Correctness	2.58 / 5
-Grounding	4.95 / 5
-Helpfulness	2.77 / 5
-Safety	5.00 / 5
-Overall	2.77 / 5
+Run the LLM judge:
 
+```bash
+python -m evaluation.analysis.llm_judge
+```
 
-The results are stored in:
-evaluation/results/llm_judge_results.csv
+Review classifier errors:
 
-The judge should be treated as an evaluation signal rather than independent human ground truth.
-No independent second-human annotation was performed for response-generation quality.
-15. Failure Analysis
-Manual review of the frozen evaluation results identified several recurring failure patterns.
-1. Delivery-state boundary confusion
-The classifier can confuse:
-delivery_late
+```bash
+python -m evaluation.analysis.review_agent_errors
+```
 
-with:
-delivered_not_received
+Review generated responses:
 
-when a message contains mixed delivery-status language.
-2. Ambiguous or noisy messages
-Short, multilingual, indirect, or conversational messages can contain signals associated with multiple intents without expressing a clear support request.
-3. Multi-signal messages
-Some customer messages contain both an underlying problem and a requested remedy.
-For example:
-"My order is 10 days late, can you cancel it and refund me?"
+```bash
+python -m evaluation.analysis.review_agent_responses
+```
 
-contains both a delivery problem and a requested resolution.
-4. Taxonomy coverage limitations
-Some real customer messages do not fit naturally into the 13-intent taxonomy and may therefore be mapped to other_or_unclear or a nearby intent.
-5. Acknowledgement without resolution
-Generated responses can acknowledge the customer's frustration or gratitude without providing a concrete next step.
-The generation failure review is stored in:
-evaluation/results/generation_failure_review.csv
+Review worst LLM-judge results:
 
-16. What Is Misleading About My Headline Number?
-The 75.0% intent accuracy is useful, but it is not a production-quality estimate.
-There are several reasons.
-Small evaluation set
-The frozen evaluation set contains only 40 examples, so individual examples have a large effect on the headline number.
-Development contamination
-The frozen evaluation set was consulted during iterative development. It should therefore not be described as a completely untouched holdout.
-Accuracy hides intent difficulty
-Clear canonical requests are easier than:
-- delivery-state boundaries
-- multilingual messages
-- ambiguous requests
-- multi-intent messages
-- noisy conversational messages
-A single accuracy number does not reveal this distribution of difficulty.
-Judge scores are not human truth
-The high grounding score from the LLM judge does not prove that generated responses are always correct or useful.
-Grounding, correctness, relevance, and helpfulness measure different properties.
-The results should therefore be interpreted as development-stage evidence that the pipeline works, rather than as a production-quality performance estimate.
-17. Project Structure
+```bash
+python -m evaluation.analysis.review_llm_judge
+```
+
+Evaluation artifacts are stored under:
+
+```text
+evaluation/results/
+```
+
+---
+
+## Engineering decisions
+
+### Why TF-IDF?
+
+TF-IDF provides a lightweight, deterministic and interpretable retrieval
+baseline that can be evaluated efficiently over a large historical corpus.
+
+A production system would compare it with dense or hybrid retrieval.
+
+### Why a local LLM?
+
+Ollama makes the complete pipeline reproducible locally without requiring an
+external API key.
+
+### Why conservative escalation?
+
+Automation should fail safely.
+
+The policy escalates cases when signals indicate that automated handling may be
+unreliable or risky, including:
+
+- unclear intent
+- low classifier confidence
+- weak retrieval
+- financial/security-sensitive requests
+- delivered-but-not-received cases
+- prolonged unresolved issues
+
+### Why Unit of Work?
+
+Case state changes and audit events should commit atomically.
+
+```text
+status update
+      +
+audit event
+      ↓
+single transaction
+      ↓
+    COMMIT
+```
+
+On failure:
+
+```text
+failure
+   ↓
+ROLLBACK
+```
+
+This keeps persisted case state consistent with its audit history.
+
+---
+
+## Failure analysis
+
+Manual review of the evaluation errors identified five recurring patterns:
+
+1. **Delivery-state boundary confusion**
+   `delivery_late` vs `delivered_not_received`
+
+2. **Underlying issue vs requested remedy**
+   A late order may also contain a refund/cancellation request.
+
+3. **Noisy or multilingual language**
+   Short messages, spelling errors, code-switching and informal syntax.
+
+4. **Taxonomy coverage**
+   Some real requests do not fit naturally into the 13 supported intents.
+
+5. **Acknowledgement without resolution**
+   Historical support responses can contain acknowledgement without a concrete
+   next step, which generation can inherit.
+
+The detailed failure artifacts are stored under:
+
+```text
+evaluation/results/
+```
+
+---
+
+## Limitations & next steps
+
+The current results are development-stage evidence.
+
+The main limitations are:
+
+- small 40-example evaluation split
+- evaluation examples were consulted during development
+- LLM-as-judge is not independent human ground truth
+- no independent second-human annotation for retrieval/generation quality
+- TF-IDF retrieval is a lightweight baseline
+- confidence calibration is not yet production-grade
+
+If taken further, the highest-value improvements would be:
+
+1. larger stratified human evaluation set
+2. independent second annotator and agreement measurement
+3. stronger delivery-state boundary handling
+4. response checks for unsupported claims
+5. dense/hybrid retrieval comparison
+6. evaluation across multiple open/local models
+7. calibrated confidence and stronger abstention
+8. genuinely untouched holdout evaluation
+9. production quality/latency/escalation monitoring
+
+---
+
+## Project structure
+
+```text
 hiver-sde-takehome/
 │
-├── data/
-│   └── processed/
-│       ├── amazonhelp_conversations.csv
-│       ├── amazonhelp_customer_sample.csv
-│       └── retrieval_pairs_safe.csv
-│
-├── evaluation/
-│   ├── analysis/
-│   │   ├── evaluate_agent_metrics.py
-│   │   ├── llm_judge.py
-│   │   ├── review_agent_errors.py
-│   │   ├── review_agent_responses.py
-│   │   └── review_llm_judge.py
-│   │
-│   ├── golden/
-│   ├── results/
-│   │   ├── agent_predictions.csv
-│   │   ├── generation_failure_review.csv
-│   │   └── llm_judge_results.csv
-│   │
-│   └── evaluate_agent.py
-│
-├── golden/
-│   ├── annotation_guidelines.md
-│   ├── labeling_notes.md
-│   ├── golden_evaluation.csv
-│   ├── evaluation_train.csv
-│   └── evaluation_test.csv
-│
-├── src/
-│   ├── escalation/
-│   │   └── policy.py
-│   │
-│   ├── generation/
-│   │   ├── config.py
-│   │   ├── generator.py
-│   │   ├── mock_provider.py
-│   │   ├── models.py
-│   │   ├── ollama_provider.py
-│   │   ├── prompts.py
-│   │   ├── provider.py
-│   │   └── response_cleaner.py
-│   │
-│   ├── intents/
-│   │   ├── classifier.py
-│   │   ├── llm_classifier.py
-│   │   ├── models.py
-│   │   └── rules.py
-│   │
-│   ├── pipeline/
-│   │   └── agent.py
-│   │
-│   └── retrieval/
-│       └── tfidf_retriever.py
-│
-├── tests/
+├── app/                    # FastAPI + persistence
+├── src/                    # AI agent pipeline
+├── evaluation/             # Evaluation harness
+├── golden/                 # Human-labelled evaluation data
+├── data/                   # Processed dataset artifacts
+├── tests/                  # Automated tests
 │
 ├── requirements.txt
 ├── README.md
 └── .gitignore
+```
 
-18. Running the Test Suite
-Run the complete automated test suite:
-python -m pytest -q
+---
 
-Current test status:
-51 passed
+## Repository
 
-The tests cover the classifier contract, LLM classifier behavior, pipeline components, retrieval/generation behavior, and escalation policy.
-19. Reproducing the Main Evaluation
-Once the dataset and Ollama model are available:
-Run the complete agent evaluation
-python -m evaluation.evaluate_agent
-
-Calculate agent metrics
-python -m evaluation.analysis.evaluate_agent_metrics
-
-Run the LLM-as-judge
-python -m evaluation.analysis.llm_judge
-
-Review classifier errors
-python -m evaluation.analysis.review_agent_errors
-
-Review generated responses
-python -m evaluation.analysis.review_agent_responses
-
-Review worst LLM-judge results
-python -m evaluation.analysis.review_llm_judge
-
-The resulting artifacts are stored under:
-evaluation/results/
-
-20. Next-Week Plan
-If this system were taken forward, I would prioritize:
-1. Expand the human evaluation set with a larger, stratified sample.
-2. Add an independent second annotator and measure human agreement.
-3. Improve delivery-state boundary handling using targeted evaluation cases.
-4. Add stronger response-level checks for unsupported claims and unnecessary information requests.
-5. Evaluate retrieval using semantic relevance in addition to TF-IDF.
-6. Compare multiple local/open models under the same evaluation harness.
-7. Introduce confidence calibration and an explicit abstention policy.
-8. Evaluate the complete system on a genuinely untouched holdout set.
-9. Add production-style observability for classification, retrieval, generation, and escalation decisions.
-21. Engineering Notes
-Design priorities
-The implementation prioritizes:
-- modular components
-- dependency injection
-- deterministic classical baselines
-- reproducible evaluation artifacts
-- leakage-aware retrieval
-- explicit escalation rules
-- local model execution
-- testable interfaces
-- transparent failure analysis
-Why TF-IDF retrieval?
-For this take-home, TF-IDF provides a lightweight and interpretable retrieval baseline that can be evaluated quickly over a large historical corpus.
-A production system would likely compare this against dense embeddings or hybrid retrieval.
-Why a local LLM?
-Using Ollama keeps the evaluation reproducible without requiring an external API key and makes the complete pipeline runnable locally.
-22. Repository
-GitHub:
+**GitHub:**
 https://github.com/pithiyakeval/hiver-sde-takehome
+
+---
+
+## Summary
+
+This project focuses on **measurability, safe automation, reproducibility and
+failure analysis** rather than treating response generation as the only
+objective.
+
+```text
+Intent Classification
+        ↓
+Historical Retrieval
+        ↓
+Grounded Generation
+        ↓
+Risk-aware Escalation
+        ↓
+Case Workflow
+        ↓
+Audit History
+        ↓
+Evaluation
+```
